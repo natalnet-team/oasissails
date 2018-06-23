@@ -17,6 +17,7 @@ parasails.registerPage('login', {
     // > The form will not be submitted if these are invalid.
     formRules: {
       emailAddress: { required: true, isEmail: true },
+      perfil: { required: true},
       password: { required: true },
     },
 

@@ -76,6 +76,11 @@ parasails.registerPage('signup', {
         this.formErrors.confirmPassword = true;
       }
 
+      // Validate perfil:
+      if(!argins.perfil) {
+        this.formErrors.perfil = true;
+      }
+
       // Validate ToS agreement:
       if(!argins.agreed) {
         this.formErrors.agreed = true;

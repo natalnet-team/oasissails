@@ -29,6 +29,13 @@ module.exports = {
       example: '2$28a8eabna301089103-13948134nad'
     },
 
+    perfil: {
+      type: 'string',
+      required: true,
+      description: 'perfil do usuário',
+      example: 'Desenvolvedor',
+    },
+
     fullName: {
       type: 'string',
       required: true,
