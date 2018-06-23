@@ -1,0 +1,14 @@
+<div id="sobre" v-cloak>
+
+  <h1>Sobre o OASIS  {{games}}</h1>
+  <p>
+    <ol>
+    <li v-for="jogo in jogos">
+      {{ jogo.titulo }}
+    </li>
+  </ol>
+  </p>
+  <p>(See also <em>assets/styles/pages/sobre.less</em>, <em>assets/js/pages/sobre.page.js</em>, and <em>api/controllers/view-sobre.js</em>.)</p>
+
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
