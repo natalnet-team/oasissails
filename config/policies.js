@@ -14,8 +14,10 @@ module.exports.policies = {
 
   // Bypass the `is-logged-in` policy for:
   'entrance/*': true,
+  'game/*': true,
+  'sgddedu/*': true,
   'account/logout': true,
   'view-homepage-or-redirect': true,
-  'deliver-contact-form-message': true,
+  'deliver-contact-form-message': true
 
 };
