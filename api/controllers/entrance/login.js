@@ -80,6 +80,7 @@ and exposed as \`req.me\`.)`
     // regardless of which database we're using)
     var userRecord = await User.findOne({
       emailAddress: inputs.emailAddress.toLowerCase(),
+      
     });
 
     // If there was no matching user, respond thru the "badCombo" exit.
@@ -87,9 +88,9 @@ and exposed as \`req.me\`.)`
       throw 'badCombo';
     }
     // Se não houver usuário referente ao perfil selecionado, retorna mensagem de erro.
-    if(userRecord.perfil.toLowerCase() != inputs.perfil.toLowerCase()){
-      throw 'badCombo';
-    }
+    //if(userRecord.perfil.toLowerCase() != inputs.perfil.toLowerCase()){
+    //  throw 'badCombo';
+    //}
 
     // If the password doesn't match, then also exit thru "badCombo".
     await sails.helpers.passwords.checkPassword(inputs.password, userRecord.password)
@@ -117,7 +118,6 @@ and exposed as \`req.me\`.)`
 
     // Send success response (this is where the session actually gets persisted)
     return exits.success();
-
   }
 
 };
