@@ -30,7 +30,6 @@ parasails.registerPage('signup', {
   mounted: async function() {
     //…
   },
-
   //  ╦╔╗╔╔╦╗╔═╗╦═╗╔═╗╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
@@ -74,6 +73,11 @@ parasails.registerPage('signup', {
       // Validate password confirmation:
       if(argins.password && argins.password !== argins.confirmPassword) {
         this.formErrors.confirmPassword = true;
+      }
+
+      // Validate perfil:
+      if(!argins.perfil) {
+        this.formErrors.perfil = true;
       }
 
       // Validate ToS agreement:
