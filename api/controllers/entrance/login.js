@@ -27,7 +27,11 @@ password attempt.`,
       type: 'string',
       required: true
     },
-
+    perfil:{
+      description: 'Tipo de perfil do usuário',
+      type: 'string',
+      required: true
+    },
     rememberMe: {
       description: 'Whether to extend the lifetime of the user\'s session.',
       extendedDescription:
@@ -80,6 +84,10 @@ and exposed as \`req.me\`.)`
 
     // If there was no matching user, respond thru the "badCombo" exit.
     if(!userRecord) {
+      throw 'badCombo';
+    }
+    // Se não houver usuário referente ao perfil selecionado, retorna mensagem de erro.
+    if(userRecord.perfil.toLowerCase() != inputs.perfil.toLowerCase()){
       throw 'badCombo';
     }
 
