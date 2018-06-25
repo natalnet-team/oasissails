@@ -35,6 +35,13 @@ the account verification message.)`,
       description: 'The unencrypted password to use for the new account.'
     },
 
+    perfil: {
+      required: true,
+      type: 'string',
+      description: 'Tipo de usuário',
+      example: 'Desenvolvedor'
+    },
+
     fullName:  {
       required: true,
       type: 'string',
@@ -57,8 +64,7 @@ the account verification message.)`,
     emailAlreadyInUse: {
       statusCode: 409,
       description: 'The provided email address is already in use.',
-    },
-
+    }
   },
 
 
@@ -71,6 +77,7 @@ the account verification message.)`,
     var newUserRecord = await User.create(Object.assign({
       emailAddress: newEmailAddress,
       password: await sails.helpers.passwords.hashPassword(inputs.password),
+      perfil: inputs.perfil.toLowerCase(),
       fullName: inputs.fullName,
       tosAcceptedByIp: this.req.ip
     }, sails.config.custom.verifyEmailAddresses? {
@@ -100,7 +107,7 @@ the account verification message.)`,
       // Send "confirm account" email
       await sails.helpers.sendTemplateEmail.with({
         to: newEmailAddress,
-        subject: 'Please confirm your account',
+        subject: 'Por favor, confirme sua conta',
         template: 'email-verify-account',
         templateData: {
           fullName: inputs.fullName,
