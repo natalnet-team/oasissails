@@ -42,32 +42,6 @@
       <div class="col-3">Senha:</div>
       <div class="col"><strong>••••••••••</strong></div>
     </div>
-    <hr/>
-    <!--TURMAS EM QUE O USUÁRIO ESTÁ APARECERIAM AQUI-->
-    <div class="row mb-3">
-      <div class="col-sm-6">
-        <h4>Turmas</h4>
-      </div>
-      <!--SE ESTIVER COM O PERFIL DE PROFESSOR, MOSTRA A OPÇÃO DE CRIAR TURMA-->
-      <div v-if="me.perfil === 'professor'" class="float-sm-right col-sm-6">
-        <span class="float-sm-right">
-          <a class="btn btn-sm btn-outline-info account-settings-button" href="#">Criar turma</a>
-        </span>
-      </div>
-    </div>
-    <div class="row mb-3">
-          <div class="card mr-3">
-            <div class="card-header text-center">Nome da turma</div>
-            <div class="card-body text-center">Descrição</div>
-            <!--<div class="card-footer">Footer</div>-->
-          </div>
-          <div class="card mr-3">
-            <div class="card-header text-center">Nome da turma</div>
-            <div class="card-body text-center">Descrição</div>
-            <!--<div class="card-footer">Footer</div>-->
-          </div>
-    </div>
-    
   </div>
 </div>
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

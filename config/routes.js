@@ -37,6 +37,7 @@ module.exports.routes = {
   'GET /sobre':              { action: 'view-sobre' },
   'GET /editor':             { action: 'sgddedu/view-editor' },
   'GET /paginadeperfil':     { action: 'view-paginadeperfil' },
+  'GET /turmas':             { action: 'view-turmas' },
 
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗

@@ -27,7 +27,7 @@ module.exports = {
 
     if (this.req.me) {
       throw {redirect:'/welcome'};
-      //throw {redirect:'/paginadeperfil'};
+      //throw {redirect:'/turmas'};
     }
 
     return exits.success();
