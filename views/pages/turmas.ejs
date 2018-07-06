@@ -1,27 +1,29 @@
 <div id="turmas" v-cloak>
   <div class="container">
+      <h1>Turmas</h1>
+    <hr/>
     <!--TURMAS EM QUE O USUÁRIO ESTÁ APARECERIAM AQUI-->
-    <div class="row mt-3 ml-3">
-      <div class="col-sm-6">
-        <h4>Turmas</h4>
+    <div class="row">
+      <div title="Turmas em que você está" class="col-sm-6">
+        <h4>Minhas Turmas</h4>
       </div>
-      <hr/>
       <!--SE ESTIVER COM O PERFIL DE PROFESSOR, MOSTRA A OPÇÃO DE CRIAR TURMA-->
       <div v-if="me.perfil === 'professor'" class="col-sm-6">
         <a class="btn btn-sm btn-outline-info account-settings-button" href="#">Criar turma</a>
       </div>
     </div>
-    <hr/>
-    <div class="row ml-3">
-      <div class="card m-3">
-        <div class="card-header text-center">Nome da turma</div>
-        <div class="card-body text-center">Descrição</div>
-        <!--<div class="card-footer">Footer</div>-->
+    <div class="row">
+      <div title="Clique para ver detalhes sobre a turma" class="card m-3">
+        <div class="card-header">Nome da turma</div>
+        <div class="card-body">Descrição</div>
       </div>
-      <div class="card m-3">
-        <div class="card-header text-center">Nome da turma</div>
-        <div class="card-body text-center">Descrição</div>
-        <!--<div class="card-footer">Footer</div>-->
+      <div title="Clique para ver detalhes sobre a turma" class="card m-3">
+        <div class="card-header">Nome da turma</div>
+        <div class="card-body">Descrição</div>
+      </div>
+      <div title="Clique para ver detalhes sobre a turma" class="card m-3">
+        <div class="card-header">Nome da turma</div>
+        <div class="card-body">Descrição</div>
       </div>
     </div>
   </div>
