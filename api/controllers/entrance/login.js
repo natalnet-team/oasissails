@@ -59,7 +59,7 @@ and exposed as \`req.me\`.)`
 
     badCombo: {
       description: `The provided email and password combination does not
-      match any user in the database.`,
+      match any user in the database. aaaa`,
       responseType: 'unauthorized'
       // ^This uses the custom `unauthorized` response located in `api/responses/unauthorized.js`.
       // To customize the generic "unauthorized" response across this entire app, change that file
@@ -87,10 +87,11 @@ and exposed as \`req.me\`.)`
     if(!userRecord) {
       throw 'badCombo';
     }
-    // Se não houver usuário referente ao perfil selecionado, retorna mensagem de erro.
-    //if(userRecord.perfil.toLowerCase() != inputs.perfil.toLowerCase()){
-    //  throw 'badCombo';
-    //}
+    // Se o tipo de perfil informado não for igual ao tipo armazenado para aquele usuario
+    // retorna "badCombo"
+    if(userRecord.perfil.toLowerCase() != inputs.perfil.toLowerCase()){
+      throw 'badCombo';
+    }
 
     // If the password doesn't match, then also exit thru "badCombo".
     await sails.helpers.passwords.checkPassword(inputs.password, userRecord.password)
@@ -117,6 +118,7 @@ and exposed as \`req.me\`.)`
     this.req.session.userId = userRecord.id;
 
     // Send success response (this is where the session actually gets persisted)
+    
     return exits.success();
   }
 

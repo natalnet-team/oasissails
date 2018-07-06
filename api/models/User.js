@@ -33,9 +33,9 @@ module.exports = {
       type: 'string',
       required: true,
       description: 'perfil do usuário',
-      example: 'Desenvolvedor',
+      example: 'desenvolvedor',
     },
-
+    
     fullName: {
       type: 'string',
       required: true,
