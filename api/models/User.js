@@ -162,7 +162,7 @@ email status until they click the link in the confirmation email.`
     },
     
     turmas: { 
-        collection: 'Turmas',
+        collection: 'Turma',
         via: 'participantes',
     },
 
