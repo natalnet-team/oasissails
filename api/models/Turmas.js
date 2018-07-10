@@ -18,7 +18,8 @@ module.exports = {
     },
     
     participantes: {
-      model: 'User',
+      collection: 'User',
+      via: 'turmas',
     },
     
     games: {
