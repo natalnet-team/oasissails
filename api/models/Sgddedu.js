@@ -12,6 +12,32 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+    
+    autor: {
+      model: User,
+    },
+    
+    disciplina: {
+      type: 'string',
+      required: true,
+      description: 'disciplinas',
+      example: 'história',
+    },
+    
+    serie: {
+      type: 'string',
+      required: true,
+      description: 'série do usuário',
+      example: '6º ano',
+    },
+  
+    conteudo: {
+      type: 'string',
+      required: true,
+      description: 'assuntos abordados',
+      example: 'império romano',
+    },
+  
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

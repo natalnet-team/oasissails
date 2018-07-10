@@ -22,7 +22,7 @@ module.exports = {
     },
     
     games: {
-      model: Game
+      model: Game,
   },
     descricao: {
       type: 'string',
