@@ -1,5 +1,5 @@
 /**
- * Game.js
+ * Turmas.js
  *
  * @description :: A model definition.  Represents a database table/collection/etc.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -13,31 +13,31 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     
-    autor: {
+    admin: {
+      model: User,    
+    },
+    
+    participantes: {
       model: User,
     },
     
-    disciplina: {
+    games: {
+      model: Game
+  },
+    descricao: {
       type: 'string',
       required: true,
-      description: 'disciplinas',
-      example: 'história',
+      description: 'descrição das turmas',
+      example: 'Turma do 6º ano do professor José',
     },
     
-    serie: {
+    codigo: {
       type: 'string',
       required: true,
-      description: 'série do usuário',
-      example: '6º ano',
-    },
-  
-    conteudo: {
-      type: 'string',
-      required: true,
-      description: 'assuntos abordados',
-      example: 'império romano',
-    },
-  
+      description: 'código da turma',
+      example: '554782',
+    }
+    
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
