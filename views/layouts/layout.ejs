@@ -31,6 +31,8 @@
         <div class="navbar-nav flex-row">
           <!-- LOGGED-IN NAVIGATION -->
           <% if(me) { %>
+          <a class="nav-item nav-link ml-2 ml-md-0 mr-2 mr-md-0" href="/Turmas">Turmas</a>
+          <a class="nav-item nav-link ml-2 ml-md-0 mr-2 mr-md-0" href="/#">Biblioteca</a>
           <a class="nav-item nav-link ml-2 ml-md-0 mr-2 mr-md-0" href="/contact">Ajuda</a>
           <!-- Only in desktop nav -->
           <div class="nav-item dropdown d-none d-sm-block">
@@ -41,7 +43,7 @@
             </div>
           </div>
           <!-- Only in mobile nav -->
-          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/account">Configurações da conta</a>
+          <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/account">Configurações</a>
           <a class="nav-item nav-link ml-2 mr-2 d-block d-sm-none" href="/logout">Sair</a>
           <% } else { %>
           <!-- LOGGED-OUT NAVIGATION -->
@@ -52,7 +54,7 @@
             <a class="btn btn-outline-info" href="/signup">Cadastrar</a>
           </div>
           <!-- Only in mobile nav -->
-          <a class="nav-item nav-link text-info ml-2 d-block d-md-none" href="/signup">Entrar</a>
+          <a class="nav-item nav-link text-info ml-2 d-block d-md-none" href="/signup">Cadastrar</a>
           <% } %>
         </div>
       </header>
@@ -134,8 +136,12 @@
     <script src="/js/pages/homepage.page.js"></script>
     <script src="/js/pages/legal/privacy.page.js"></script>
     <script src="/js/pages/legal/terms.page.js"></script>
+    <script src="/js/pages/paginadeperfil.page.js"></script>
     <script src="/js/pages/sgddedu/editor.page.js"></script>
     <script src="/js/pages/sobre.page.js"></script>
+
+    <script src="/js/pages/turmas.page.js"></script>
+
     <!--SCRIPTS END-->
   </body>
 </html>

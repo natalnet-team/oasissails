@@ -16,11 +16,12 @@ module.exports.routes = {
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
   'GET /':                   { action: 'view-homepage-or-redirect' },
   'GET /welcome':            { action: 'dashboard/view-welcome' },
-
+  
   'GET /faq':                { view:   'pages/faq' },
   'GET /legal/terms':        { view:   'pages/legal/terms' },
   'GET /legal/privacy':      { view:   'pages/legal/privacy' },
   'GET /contact':            { view:   'pages/contact' },
+  'GET /tabelasgdd':         { view:   'pages/tabelasgdd'},
 
   'GET /signup':             { action: 'entrance/view-signup' },
   'GET /email/confirm':      { action: 'entrance/confirm-email' },
@@ -35,6 +36,8 @@ module.exports.routes = {
   'GET /account/profile':    { action: 'account/view-edit-profile' },
   'GET /sobre':              { action: 'view-sobre' },
   'GET /editor':             { action: 'sgddedu/view-editor' },
+  'GET /paginadeperfil':     { action: 'view-paginadeperfil' },
+  'GET /turmas':             { action: 'view-turmas' },
 
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
