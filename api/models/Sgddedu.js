@@ -14,7 +14,7 @@ module.exports = {
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     
     autor: {
-      model: User,
+      model: 'User',
     },
     
     disciplina: {

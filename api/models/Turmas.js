@@ -14,15 +14,15 @@ module.exports = {
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     
     admin: {
-      model: User,    
+      model: 'User',    
     },
     
     participantes: {
-      model: User,
+      model: 'User',
     },
     
     games: {
-      model: Game,
+      model: 'Game',
   },
     descricao: {
       type: 'string',
