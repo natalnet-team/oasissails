@@ -14,7 +14,8 @@ module.exports = {
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     
     admin: {
-      model: 'User',    
+      model: 'User',
+      required: true,
     },
     
     participantes: {

@@ -15,6 +15,8 @@ module.exports = {
     
     autor: {
       model: 'User',
+      required: true,
+      description: 'Usuário autor do jogo',
     },
     
     disciplina: {
