@@ -15,12 +15,11 @@ module.exports = {
     
     admin: {
       model: 'User',
-      required: true,
     },
     
     participantes: {
       collection: 'User',
-      via: 'turmas',
+      via: 'turma',
     },
     
     games: {

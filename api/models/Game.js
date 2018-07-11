@@ -12,7 +12,14 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-    
+    id: {
+      type: 'number',
+      autoIncrement: true,
+    },
+    nome: {
+      type: 'string',
+      required: true,
+    },
     autor: {
       model: 'User',
       required: true,
