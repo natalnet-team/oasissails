@@ -11,7 +11,10 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
+    turma: {
+      collection: 'Turmas',
+      via: 'admin',
+    },
     emailAddress: {
       type: 'string',
       required: true,
@@ -32,6 +35,7 @@ module.exports = {
     perfil: {
       type: 'string',
       required: true,
+      isIn: ['desenvolvedor','usuario'],
       description: 'perfil do usuário',
       example: 'desenvolvedor',
     },

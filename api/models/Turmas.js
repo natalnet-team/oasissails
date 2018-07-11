@@ -14,7 +14,7 @@ module.exports = {
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     
     admin: {
-      model: 'User',    
+      model: 'User',
     },
     
     participantes: {
