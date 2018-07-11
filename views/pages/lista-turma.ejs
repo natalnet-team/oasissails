@@ -1,0 +1,6 @@
+<div id="lista-turma" v-cloak>
+  
+    <a v-for="Userturma_adm in Userturma_adms" href="#">{{ Userturma_adm.descricao }}</a>
+    <a v-for="Userturma in Userturmas" href="#">{{ Userturma.descricao }}</a>
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

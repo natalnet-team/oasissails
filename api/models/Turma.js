@@ -15,6 +15,7 @@ module.exports = {
     
     admin: {
       model: 'User',
+      
     },
     
     participantes: {
