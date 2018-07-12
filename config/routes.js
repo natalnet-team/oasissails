@@ -38,9 +38,13 @@ module.exports.routes = {
   'GET /editor':             { action: 'sgddedu/view-editor' },
   'GET /paginadeperfil':     { action: 'view-paginadeperfil' },
   'GET /turmas':             { action: 'view-turmas' },
+<<<<<<< HEAD
   'GET /homeusuario':        { view: 'pages/usuario/homepageusuario'},
   'GET /homepageusuario':    { action: 'view-homepageusuario' },
   'GET /game':               { action: 'view-game' },
+=======
+  'GET /iniciodesenvolvedor': { action: 'view-iniciodesenvolvedor'},
+>>>>>>> 879e09477e8d0af2f22b835c9f5c157828a313f5
 
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
