@@ -33,9 +33,9 @@ module.exports = {
       type: 'string',
       required: true,
       description: 'perfil do usuário',
-      example: 'Desenvolvedor',
+      example: 'desenvolvedor',
     },
-
+    
     fullName: {
       type: 'string',
       required: true,
@@ -159,6 +159,11 @@ email status until they click the link in the confirmation email.`
       type: 'number',
       description: 'A JS timestamp (epoch ms) representing the moment at which this user most recently interacted with the backend while logged in (or 0 if they have not interacted with the backend at all yet).',
       example: 1502844074211
+    },
+    
+    turmas: { 
+        collection: 'Turma',
+        via: 'participantes',
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

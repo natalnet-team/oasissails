@@ -12,6 +12,34 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+    
+    autor: {
+      model: 'User',
+      required: true,
+      description: 'Usuário que autor do SGDDEDU',
+    },
+    
+    disciplina: {
+      type: 'string',
+      required: true,
+      description: 'disciplinas',
+      example: 'história',
+    },
+    
+    serie: {
+      type: 'string',
+      required: true,
+      description: 'série do usuário',
+      example: '6º ano',
+    },
+  
+    conteudo: {
+      type: 'string',
+      required: true,
+      description: 'assuntos abordados',
+      example: 'império romano',
+    },
+  
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
