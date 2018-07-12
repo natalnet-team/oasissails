@@ -22,7 +22,7 @@ module.exports = {
       type: 'string',
       required: true,
       description: 'Descrição do jogo',
-    }
+    },
 
     autor: {
       model: 'User',
