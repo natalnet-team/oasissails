@@ -13,12 +13,21 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     
+    nome:{
+      type: 'string',
+      required: true,
+      description: 'Nome da turma',
+      example: 'Matematica 3º ano',
+    },
+
     admin: {
       model: 'User',    
+      //unique: true,
     },
     
     participantes: {
-      model: 'User',
+      collection: 'User',
+      via: 'turma_part',
     },
     
     games: {

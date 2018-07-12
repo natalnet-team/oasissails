@@ -59,61 +59,15 @@
         </div>
       </header>
       <% if(me) { %>
-      <!-- <div id="sidebar" class="col-2">
-        <div class="sidebar-header">
-          <nav class="sidebar-nav">
-            <ul class="list-group list-group-flush" >
-              <div class="dropdown">
-                 <li class="list-group-item list-group-item-action dropdown-btn" data-toggle="dropdown" aria-expanded="false" >Turmas</li>
-                <ul class="list-group list-group-flush dropdown-container">
-                <li class="list-group-item">Blabalabla</li>
-                </ul>
-              </div>
-            <div class=" dropdown">
-              <li class="list-group-item list-group-item-action dropdown-toggle" data-toggle="dropdown">Turmas</li>
-              <ul class="dropdown-menu">
-                <li class="list-group-item list-group-flush dropdown-item" href="#">asgas</li>
-                <li class="list-group-item dropdown-item" href="#">Sagasgir</li>
-              </ul>
-            </div>
-              <li class="list-group-item">Blalala</li>
-              <li class="list-group-item">Biblioteca</li>
-            </ul>
-          </nav>
-        </div>
-
-      </div>-->
       <div class="sidenav col-2">
         <a href="#about">Home</a>
         <a href="#">Tabela</a>
-        <button class="dropdown-btn">Turmas 
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-        </div>
-        <button class="dropdown-btn">
-          <% if(me.perfil === "usuario"){ %>
-          Meus jogos 
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-        </div>
+        <a href="../turmas">Turmas 
+        <% if(me.perfil === "usuario"){ %>
+          <a href="">Meus jogos</a> 
           <% }%>
           <% if(me.perfil === "desenvolvedor"){ %>
-          Minhas contribuições
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
-        </div>
+          <a href="">Minhas contribuições</a>
         <% }%>
       </div>
       <% } %>
@@ -156,22 +110,7 @@
       by the asset pipeline between "SCRIPTS" and "SCRIPTS END", or both.
       (https://sailsjs.com/docs/concepts/assets/task-automation)
     */ %>
-    <script>
-      var dropdown = document.getElementsByClassName("dropdown-btn");
-      var i;
-
-      for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var dropdownContent = this.nextElementSibling;
-    if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } else {
-      dropdownContent.style.display = "block";
-    }
-  });
-}
-    </script>
+    
     <% /* Load Stripe Checkout */ %>
     <script src="https://checkout.stripe.com/checkout.js"></script>
 
@@ -209,6 +148,7 @@
     <script src="/js/pages/homepage.page.js"></script>
     <script src="/js/pages/legal/privacy.page.js"></script>
     <script src="/js/pages/legal/terms.page.js"></script>
+    <script src="/js/pages/nav.page.js"></script>
     <script src="/js/pages/paginadeperfil.page.js"></script>
     <script src="/js/pages/sgddedu/editor.page.js"></script>
     <script src="/js/pages/sobre.page.js"></script>

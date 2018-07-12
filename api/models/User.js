@@ -12,6 +12,16 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
+    turma_owned: {
+      collection: 'Turma',
+      via: 'admin',
+    },
+
+    turma_part: {
+      model: 'Turma',
+    },
+
+
     emailAddress: {
       type: 'string',
       required: true,
@@ -32,6 +42,7 @@ module.exports = {
     perfil: {
       type: 'string',
       required: true,
+      isIn: ['desenvolvedor','usuario'],
       description: 'perfil do usuário',
       example: 'desenvolvedor',
     },
