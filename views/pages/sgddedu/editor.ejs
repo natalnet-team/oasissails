@@ -1,99 +1,150 @@
+
 <body>
-<meta charset="utf-8">
+<meta charset="utf-8">  
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  
 <div id="editor" v-cloak>
   <div class="jumbotron">
     <h2>Editor SGDDEDU</h2>
   </div>
+  
+  <div class="conteiner">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
     
-          <form action="game/create" method="GET">
+          <form action="Sgddedu/create" method="GET">
            <input v-model="titulo" name="titulo" placeholder="Titulo"><br>
-           <input v-model="autor" name="autor" placeholder="Autor"><br>
+           <input id="autor" v-bind:value="<%= me.id %>" name="autor" style="display:none"><br>
            <textarea v-model="historia" name="historia" placeholder="Historia"></textarea><br>
            <textarea v-model="jogo" name="jogo" placeholder="Jogo"></textarea><br>
-           <button type="submit" class="btn btn-primary">Submit</button>
+          
+            <button type="submit" class="btn btn-primary">Submit</button>
+            
          </form>  
       </div>
-      <div class="col-sm-6">
-         <h1>{{ titulo }}</h1>
-         <h4><i>Autor(a): {{ autor }}</i></h4>
+      <div class="col-sm-4">
+         <h1>Titulo:{{ titulo }}</h1>
+         <h4><i>Autor(a):<%= me.fullName %></i></h4>
          <h3>Historia</h3>
          <p style="white-space: pre-line;">{{ historia }}</p>
          <h3>Jogo</h3>
          <p style="white-space: pre-line;" contenteditable= "true">{{ jogo }}</p>
       </div>
-    </div> 
-<button onclick="getSelectionHtml('listaarte');" class="button">Arte</button>
-<button onclick="getSelectionHtml('listadesenv');" class="button button2">Programação</button>
-<button onclick="getSelectionHtml('listaaudio');" class="button button3">Audio</button>
-<button onclick="removeLista('listaarte');"> Limpar Arte</button>
-<button onclick="removeLista('listadesenv');"> Limpar Prog</button>
-<button onclick="removeLista('listaaudio');"> Limpar Audio</button>
-<br><br><br>
-<div class="box1">
-<div id="header">
-  <h2>
-    Arte
-  </h2>
-</div>
-<ul id="listaarte"></ul>
-<br>
-</div>
-<div class="box2">
-<div id="header2">
-  <h2>
-    Programação
-  </h2>
-</div>
-<ul id="listadesenv"></ul>
-<br>
-</div>
-<div class ="box3">
-<div id="header3">
-  <h2>
-    Audio
-  </h2>
-</div>
-<ul id="listaaudio"></ul>
-<br>
-</div>
-</div>
+      
+      
+        <div class="col-sm-3">
+ 
+<button onclick="appendText(1)">jogo</button>
+<button onclick="appendText(2)">arte</button>
+<button onclick="appendText(3)">audio</button>
+    
+      <div class="col-sm-12" >
+      
+       <div class="panel-group">
+          <div class="panel panel-default" >
+             <div  class="panel-heading" style="background-color: cyan" > Programação</div>
+             <div id="programacao" class="panel-body"> </div>
+          </div>
+       </div>
+      </div>
+    
+   
+   
+     <div class="col-sm-12" >
+      
+          <div class="panel-group">
+            <div class="panel panel-default" >
+              <div class="panel-heading" style="background-color: Yellow">Arte</div>
+              <div id="arte" class="panel-body"> </div>
+            </div>
+  	     </div>
+     </div>
+      
+    
+    
+      <div class="col-sm-12" >
+      	
+       <div class="panel-group">
+        <div class="panel panel-default" >
+           <div class="panel-heading" style="background-color: lime">Aúdio</div>
+          <div id="ad" class="panel-body"> </div>
+        </div>
+      </div>
+        
+      </div>
+    
+           
+  </div>
+      
+      
+    </div>
+
+  
+
+      </div>
+  </div>  
   </body>
 <script type="application/javascript">
-function getSelectionHtml(identidade){
-var html = "";
-  var antes = document.getElementById(identidade).innerHTML;
-  var novalinha = "<li>";
-  var fechalinha = "</li>";
-  if (typeof window.getSelection != "undefined") {
-    var sel = window.getSelection();
-    if (sel.rangeCount) {
-      var container = document.createElement("div");
-      for (var i = 0, len = sel.rangeCount; i < len; ++i) {
-        container.appendChild(sel.getRangeAt(i).cloneContents());
-      }
-      html = container.innerHTML;
-    }
-  } else if (typeof document.selection != "undefined") {
-    if (document.selection.type == "Text") {
-      html = document.selection.createRange().htmlText;
-    }
+function opcao(n){
+ 
+  if(n == 1){
+    return "programacao";
+  } else
+  if(n == 2){
+    return "arte";
+  } else
+  if(n == 3){
+    return "ad"
   }
-  document.getElementById(identidade).innerHTML = antes.concat(novalinha, html, fechalinha);
+} 
+
+  
+function getSelected() {
+    if (window.getSelection) {
+        return window.getSelection();
+    }
+    else if (document.getSelection) {
+        return document.getSelection();
+    }
+    else {
+        var selection = document.selection && document.selection.createRange();
+        if (selection.text) {
+            return selection.text;
+        }
+        return false;
+    }
+    return false;
+}
+
+function appendText(opc) {
+    var str= opcao(opc);
+    var txt3 = document.createElement("p");
+  // grifar(txt3);
+    getSelectionHtml(str);
+    txt3.innerHTML = "[ ]  " + getSelected() + ";" ;               // Create text with DOM
+    $("#"+str).append(txt3);     // Append new elements
+}
+
+
+function getSelectionHtml(identidade) {
    var sel, range, node;
     if (window.getSelection) {
         sel = window.getSelection();
         if (sel.getRangeAt && sel.rangeCount) {
             range = window.getSelection().getRangeAt(0);
-            if(identidade=='listaarte'){
-            var textohtml = '<span style="background-color:#FFD700;">' + range + '</span>';
+            if(identidade =="programacao"){
+            var textohtml = '<span style="background-color:cyan;">' + range + '</span>';
             }
-            else if(identidade=='listadesenv'){
-            var textohtml = '<span style="background-color:#1E90FF;">' + range + '</span>';
+            else if(identidade== "arte"){
+            var textohtml = '<span style="background-color:yellow;">' + range + '</span>';
             }
-            else if(identidade='listaaudio'){
-            var textohtml = '<span style="background-color:#FF69B4;">' + range + '</span>';
+            else if(identidade == "ad"){
+            var textohtml = '<span style="background-color:lime;">' + range + '</span>';
             }
             range.deleteContents();
             
@@ -118,88 +169,5 @@ function removeLista(identidade) {
 
 }
 </script>
-<style>
 
-#header {
-  background-color: #FFD700;
-  padding: 5px;
-  text-align: center;
-  font-size: 20px;
-  color: black;
-}
-
-#header2 {
-  background-color: #1E90FF;
-  padding: 5px;
-  text-align: center;
-  font-size: 20px;
-  color: black;
-}
-
-#header3 {
-  background-color: #FF69B4;
-  padding: 5px;
-  text-align: center;
-  font-size: 20px;
-  color: black;
-}
-
-#listaaudio {
-  list-style-image: url("https://png.icons8.com/metro/13/FF69B4/music.png");
-  list-style-position: inside;
-}
-
-#listadesenv {
-  list-style-image: url("https://png.icons8.com/small/16/1E90FF/source-code.png");
-  list-style-position: inside;
-  
-}
-
-#listaarte {
-  list-style-image: url("https://png.icons8.com/metro/13/FFD700/paint-bucket.png");
-  list-style-position: inside;
-}
-.box1{
-  width:30%;
-  float:left;
-  margin-right: 20px;
-  overflow: hidden;
-  border: 1px solid #000;
-}
-.box2{
-  width:30%;
-  float: left;
-  margin-right: 20px;
-  overflow: hidden;
-  border: 1px solid #000;
-}
-.box3{
-  width:30%;
-  float: left;
-  overflow: hidden;
-  border: 1px solid #000;
-}
-
-.button {
-  background-color: #FFD700;
-  /*amarelo */
-  border-radius: 4px;
-  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  color: white;
-  padding: 8px 15px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 12px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.button2 {
-  background-color: #1E90FF;
-}
-
-.button3 {
-  background-color: #FF69B4;
-</style>
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>

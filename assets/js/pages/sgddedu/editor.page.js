@@ -2,14 +2,18 @@ parasails.registerPage('editor', {
 
   data: {
     //…
-    teste: "Bom dia vue",
+    teste: "",
     titulo: "",
     autor: "",
     historia: "",
-    jogo: "",
+    jogo: "" ,
+    
   },
 
 
+  
+  
+  
   beforeMount: function() {
     // Attach any initial data from the server.
     _.extend(this, SAILS_LOCALS);
