@@ -13,6 +13,17 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     
+    nome: {
+      type:'string',
+      required: true,      
+    },
+
+    descricao: {
+      type: 'string',
+      required: true,
+      description: 'Descrição do jogo',
+    },
+
     autor: {
       model: 'User',
       required: true,
@@ -40,6 +51,11 @@ module.exports = {
       example: 'império romano',
     },
   
+    documento: {
+      model: 'Sgddedu',
+      required: true,
+      unique: true,
+    },
 
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗

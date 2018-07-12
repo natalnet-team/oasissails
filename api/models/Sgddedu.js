@@ -12,6 +12,17 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
+
+    nome: {
+      type:'string',
+      required: true,      
+    },
+
+    descricao: {
+      type: 'string',
+      required: true,
+      description: 'Descrição do jogo',
+    },
     
     autor: {
       model: 'User',
@@ -39,6 +50,11 @@ module.exports = {
       description: 'assuntos abordados',
       example: 'império romano',
     },
+
+    game: {
+      collection: 'Game',
+      via: 'documento',    
+    }
   
 
 
