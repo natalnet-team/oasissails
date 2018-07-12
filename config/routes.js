@@ -44,12 +44,6 @@ module.exports.routes = {
   'GET /turmas':             { action: 'view-turmas' },
   'GET /iniciodesenvolvedor': { action: 'view-iniciodesenvolvedor'},
 
-  'GET /paginadeperfil':     { action: 'view-paginadeperfil' },
-  'GET /turmas':             { action: 'view-turmas' },
-  'GET /homeusuario':        { view: 'pages/usuario/homepageusuario'},
-  'GET /homepageusuario':    { action: 'view-homepageusuario' },
-  'GET /game':               { action: 'view-game' },
-  'GET /iniciodesenvolvedor': { action: 'view-iniciodesenvolvedor'},
 
 
 
