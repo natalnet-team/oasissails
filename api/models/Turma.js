@@ -25,7 +25,13 @@ module.exports = {
     
     games: {
       model: 'Game',
-  },
+    },
+    nome: {
+      type: 'string',
+      required: true,
+      description: 'nome da turma',
+      example: 'Turma A',
+    },
     descricao: {
       type: 'string',
       required: true,
