@@ -35,7 +35,8 @@ module.exports.routes = {
   'GET /account/profile':    { action: 'account/view-edit-profile' },
   'GET /sobre':              { action: 'view-sobre' },
   'GET /editor':             { action: 'sgddedu/view-editor' },
-  'GET /homepageusuario':    { action: 'view-homepageusuario'},
+  'GET /homepageusuario':    { action: 'view-homepageusuario' },
+  'GET /game':               { action: 'view-game' },
 
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
