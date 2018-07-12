@@ -1,17 +1,17 @@
-<div id="homepageusuario" v-cloak>  
+<div id="homepageusuario" v-cloak class="col-md-10 offset-md-2">
   <div class="container-fluid">
-      <h1>Bem vindo(a), <%= me.fullName %>!</h1>
-      <hr/>
+    <h1>Bem vindo(a), <%= me.fullName %>!</h1>
+    <hr/>
   </div>    
     
   <!--TURMAS EM QUE O USUÁRIO ESTÁ APARECERIAM AQUI-->
   <div class="container">  
     <div class="row">
-      <div  class="col-sm-5">
-        <h4 title="Turmas que você participa">Minhas Turmas</h4>
+      <div  class="col-md-5">
+        <h4 title="Turmas que você participa">Minhas Turmas</h4>      
       </div>
       <!--SE ESTIVER COM O PERFIL DE PROFESSOR, MOSTRA A OPÇÃO DE CRIAR TURMA-->
-      <div v-if="me.perfil === 'professor'" class="col-sm-2">      
+      <div class="col-sm-2">      
         <a href="#" style="font-size: 13px" title="Criar turma">(+)</a>
       </div>        
       <div title="Estatísticas" class="col-sm-5">
@@ -19,8 +19,8 @@
       </div>
     </div>
         
-    <div class="row">
-      <div v-if="me.perfil === 'professor'" class="col-sm-5">
+    <div class="row">    
+      <div class="col-sm-7">
         <a href="#" style="font-size: 13px;">Ver todas</a>  
       </div>    
       <div class="col-sm-5">
@@ -65,13 +65,13 @@
         <h4>Meus jogos</h4>
       </div>  
       <!--SE ESTIVER COM O PERFIL DE USUARIO, PODE EDITAR OU REMOVER JOGOS-->
-      <div v-if="me.perfil === 'professor'" class="col-sm-2">
+      <div class="col-sm-2">
         <a href="#" style="font-size: 15px" title="Editar/Remover turmas">(-)</a>
       </div>      
     </div>
     
     <div class="row">
-      <div v-if="me.perfil === 'professor'" class="col-sm-6">
+      <div class="col-sm-6">
         <a href="#" style="font-size: 13px;">Ver todos</a>  
       </div>
     </div>
@@ -103,7 +103,7 @@
         <div class="card-body">Descrição</div>
       </div>
     </div>
-  </div>  
-</div>    
-    <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
-    
+  </div>
+</div>  
+  <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
+  
