@@ -17,9 +17,9 @@ module.exports = {
 
 
   fn: async function (inputs, exits) {
-
+    var game = await Game.find()
     // Respond with view.
-    return exits.success();
+    return exits.success({games: game});
 
   }
 

@@ -52,9 +52,9 @@ module.exports = {
     },
   
     documento: {
-      model: 'Sgddedu',
-      required: true,
-      unique: true,
+      model: 'Sgddedu',      
+  //   unique: true,
+  //    required: true,
     },
 
 
