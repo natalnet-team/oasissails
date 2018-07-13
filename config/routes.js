@@ -43,6 +43,7 @@ module.exports.routes = {
   'GET /paginadeperfil':     { action: 'view-paginadeperfil' },
   'GET /turmas':             { action: 'view-turmas' },
   'GET /iniciodesenvolvedor': { action: 'view-iniciodesenvolvedor'},
+  'GET /listarjogos':         { action: 'view-listargames' },
 
 
 
