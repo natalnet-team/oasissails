@@ -4,10 +4,7 @@ parasails.registerPage('turmas', {
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: {
 
-    nome: '',
-    id: '',
-    descricao: '',
-    codigo: '',
+    
   },
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗

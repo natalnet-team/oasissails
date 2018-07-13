@@ -37,9 +37,9 @@ module.exports.routes = {
   'GET /sobre':              { action: 'view-sobre' },
   'GET /editor':             { action: 'sgddedu/view-editor' },
   'GET /paginadeperfil':     { action: 'view-paginadeperfil' },
-  'GET /turmas':             { action: 'view-turmas' },
+  'GET /turmas':             { action: 'turmas/view-turmas' },
   'GET /listturma':          { action: 'partial/view-listturma'},
-
+  'POST /turmas':            { action: 'turmas/turmas'},
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝
