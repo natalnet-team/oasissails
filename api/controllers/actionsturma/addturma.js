@@ -6,7 +6,9 @@
  */
 
 module.exports = {
-  friendlyName: 'turmascontroller',
+  friendlyName: 'addturma',
+  
+  description: 'Insere usuario no collection participantes e turma no collection turmas',
   
   inputs: {
     userid: {
@@ -23,13 +25,21 @@ module.exports = {
   
   exits: {
     success: {
+      statusCode: 200,
+      description: 'Success',
       viewTemplatePath: 'pages/turmas'
-    }
+    },
+    redirect: {
+      responseType: 'redirect',
+      description: 'Redireciona para a pagina de turmas para evitar uns bugs aí'
+    },
   },
   
   fn: async function (inputs, exits) {
     var adicionar = await User.addToCollection(inputs.userid, 'turmas', inputs.turmaid);
-    return exits.success();
+    sails.log.debug('Usuário %s adicionado a turma %s',inputs.userid,inputs.turmaid);
+    //return exits.success();
+    throw {redirect:'/turmas'};
   },
 
 };
