@@ -39,7 +39,9 @@ module.exports.routes = {
   'GET /paginadeperfil':     { action: 'view-paginadeperfil' },
   'GET /turmas':             { action: 'view-turmas' },
   'GET /iniciodesenvolvedor': { action: 'view-iniciodesenvolvedor'},
-  'POST /addturma':  { action: 'actionsturma/addturma'},
+  'POST /addturma':           { action: 'actionsturma/addturma'},
+  'POST /rmturma':            { action: 'actionsturma/rmturma'},
+
 
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
