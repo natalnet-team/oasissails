@@ -1,10 +1,3 @@
-/**
- * TurmasController
- *
- * @description :: Server-side actions for handling incoming requests.
- * @help        :: See https://sailsjs.com/docs/concepts/actions
- */
-
 module.exports = {
   friendlyName: 'addturma',
   
@@ -37,9 +30,9 @@ module.exports = {
   
   fn: async function (inputs, exits) {
     var adicionar = await User.addToCollection(inputs.userid, 'turmas', inputs.turmaid);
-    sails.log.debug('Usuário %s adicionado a turma %s',inputs.userid,inputs.turmaid);
-    //return exits.success();
-    throw {redirect:'/turmas'};
+    //sails.log.debug('Usuário %s adicionado a turma %s',inputs.userid,inputs.turmaid);
+    //return exits.success();//CAUSA BUGS
+    throw {redirect:'/turmas'};//ASSIM VAI
   },
 
 };
