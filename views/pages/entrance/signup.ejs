@@ -30,8 +30,7 @@
           <select id="perfil" v-model="formData.perfil" class="form-control" :class="[formErrors.perfil ? 'is-invalid' : '']">
             <option disabled value="">Informe qual seu perfil...</option>
             <option>Desenvolvedor</option>
-            <option>Professor</option>
-            <option>Aluno</option>
+            <option>Usuario</option>
           </select>
           <div class="invalid-feedback" v-if="formErrors.emailAddress">Por favor, informe seu tipo de perfil.</div>
         </div>

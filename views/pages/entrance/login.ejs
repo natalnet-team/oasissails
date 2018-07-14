@@ -16,8 +16,7 @@
           <select v-model="formData.perfil" class="form-control" :class="[formErrors.perfil ? 'is-invalid' : '']">
             <option disabled value="">Entrar como...</option>
             <option>Desenvolvedor</option>
-            <option>Professor</option>
-            <option>Aluno</option>
+            <option>Usuario</option>
           </select>
           <div class="invalid-feedback" v-if="formErrors.perfil">Informe seu tipo de perfil.</div>
         </div>
