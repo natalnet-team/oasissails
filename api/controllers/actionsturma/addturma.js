@@ -8,7 +8,7 @@
 module.exports = {
   friendlyName: 'addturma',
   
-  description: 'Insere usuario no collection participantes e turma no collection turmas',
+  description: 'Insere usuario em turma',
   
   inputs: {
     userid: {
