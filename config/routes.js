@@ -15,7 +15,7 @@ module.exports.routes = {
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
   'GET /':                   { action: 'view-homepage-or-redirect' },
-  'GET /welcome':            { action: 'dashboard/view-welcome'}, //locals: { layout: 'layouts/nav'} },
+  'GET /welcome':            { action: 'dashboard/view-welcome'}, 
 
   'GET /faq':                { view:   'pages/faq' },
   'GET /legal/terms':        { view:   'pages/legal/terms' },
@@ -40,7 +40,6 @@ module.exports.routes = {
 
   'GET /iniciodesenvolvedor': { action: 'view-iniciodesenvolvedor'},
   'GET /turmas':             { action: 'turmas/view-turmas' },
-  'GET /listturma':          { action: 'partial/view-listturma'},
   'POST /turmas':            { action: 'turmas/turmas'},
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
