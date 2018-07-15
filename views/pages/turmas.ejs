@@ -6,10 +6,22 @@
     <div class="row">
       <div title="Turmas em que você está" class="col-sm-6">
         <h4>Minhas Turmas</h4>
+        <div v-if="visivel">
+          <form action="turma" method="post">
+            <input type="hidden" name="admin" value="<%= me.id %>">
+            <!--TO-DO:<input type="text" name="participantes">-->
+            <!--TO-DO<input type="text" name="games">-->
+            Nome:<input type="text" name="nome"><br><br>
+            Descrição:<br><textarea name="descricao" placeholder="Ex: Turma do 6º ano do professor José"></textarea><br>
+            <input type="hidden" name="codigo" value="1"><!--TESTE-->
+            <input type="hidden" name="_csrf" value="<%= _csrf %>">
+            <input type="submit" value="Criar">
+          </form>
+        </div>
       </div>
-      <!--SE ESTIVER COM O PERFIL DE PROFESSOR, MOSTRA A OPÇÃO DE CRIAR TURMA-->
-      <div v-if="me.perfil === 'professor'" class="col-sm-6">
-        <a class="btn btn-sm btn-outline-info account-settings-button" href="#">Criar turma</a>
+      <div class="col-sm-6">
+        <a class="btn btn-sm btn-outline-info account-settings-button" 
+           @click="visibilidade()">{{buttontext}}</a>
       </div>
     </div>
     <div class="row">

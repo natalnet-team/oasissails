@@ -4,6 +4,8 @@ parasails.registerPage('turmas', {
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: {
     //…
+    visivel: false,
+    buttontext: 'Criar Turma',
   },
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
@@ -22,5 +24,14 @@ parasails.registerPage('turmas', {
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
     //…
+    visibilidade: async function() {
+      if(this.visivel){
+        this.visivel = false;
+        this.buttontext = 'Criar Turma';
+      }else{
+        this.visivel = true;
+        this.buttontext = 'Cancelar';
+      }
+    },
   }
 });
