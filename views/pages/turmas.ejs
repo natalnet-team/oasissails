@@ -1,4 +1,4 @@
-<div id="turmas" class="col-md-10 offset-md-2" v-cloak>
+<div id="turmas" v-cloak>
   <div class="container">
       <h1>Turmas</h1>
     <hr/>
@@ -22,10 +22,10 @@
             </div>
             <div class="modal-body">
               <form action="turmas" method="POST">
-                Nome: <input type="textarea" name="nome"></input><br>
+                Nome: <input type="textarea" class="form-control" name="nome"></input><br>
                 <input type="hidden" name="admin" value="<%= me.id %>" style="display: none"></input>
-                Descrição: <input type="textarea" name="descricao"></input><br>
-                Código: <input type="textarea" name="codigo"></input><br>
+                Descrição: <input type="textarea" class="form-control" name="descricao"></input><br>
+                Código: <input type="textarea" class="form-control" name="codigo"></input><br>
                 <!-- ** LEMBRETE ** 
                 Gerar codigo automaticamente -->
                 <input type="hidden" name="_csrf" value="<%- _csrf %>" />
