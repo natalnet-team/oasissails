@@ -13,19 +13,27 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     
-    admin: {
-      model: 'User',
+    nome:{
+      type: 'string',
       required: true,
+      description: 'Nome da turma',
+      example: 'Matematica 3º ano',
+    },
+
+    admin: {
+      model: 'User',    
+      //unique: true,
     },
     
     participantes: {
       collection: 'User',
-      via: 'turmas',
+      via: 'turma_part',
     },
     
     games: {
       model: 'Game',
-  },
+    },
+    
     descricao: {
       type: 'string',
       required: true,

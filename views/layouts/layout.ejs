@@ -20,11 +20,11 @@
     <link rel="stylesheet" href="/dependencies/bootstrap-4/bootstrap-4.css">
     <link rel="stylesheet" href="/dependencies/font-awesome-4/css/font-awesome.css">
     <link rel="stylesheet" href="/styles/importer.css">
-    <link rel="stylesheet" href="/styles/style.css">
     <!--STYLES END-->
   </head>
 
   <body>
+
     <div id="page-wrap">
       <header id="page-header" class="navbar navbar-expand-sm navbar-dark bg-dark flex-column flex-md-row justify-content-between">
         <a class="navbar-brand mr-0" href="/">OASIS</a>
@@ -58,7 +58,19 @@
           <% } %>
         </div>
       </header>
-
+      <% if(me) { %>
+      <div class="sidenav col-2">
+        <a href="#about">Home</a>
+        <a href="#">Tabela</a>
+        <a href="../turmas">Turmas 
+        <% if(me.perfil === "usuario"){ %>
+          <a href="">Meus jogos</a> 
+          <% }%>
+          <% if(me.perfil === "desenvolvedor"){ %>
+          <a href="">Minhas contribuições</a>
+        <% }%>
+      </div>
+      <% } %>
       <!-- Alert if email has not been confirmed -->
       <% if(me&&me.emailChangeCandidate) { %>
       <div class="container-fluid">
@@ -73,9 +85,9 @@
         </div>
       </div>
       <% } %>
-
+      <div class="col-md-10 offset-md-2">
       <%- body %>
-
+    </div>
       <footer id="page-footer" class="navbar navbar-light justify-content-between flex-row-reverse">
         <div class="nav">
           <small class="nav-item"><a class="nav-link text-info" href="/contact">Contact<span class="d-none d-sm-inline"> us</span></a></small>
@@ -98,7 +110,7 @@
       by the asset pipeline between "SCRIPTS" and "SCRIPTS END", or both.
       (https://sailsjs.com/docs/concepts/assets/task-automation)
     */ %>
-
+    
     <% /* Load Stripe Checkout */ %>
     <script src="https://checkout.stripe.com/checkout.js"></script>
 
@@ -137,6 +149,7 @@
     <script src="/js/pages/iniciodesenvolvedor.page.js"></script>
     <script src="/js/pages/legal/privacy.page.js"></script>
     <script src="/js/pages/legal/terms.page.js"></script>
+    <script src="/js/pages/nav.page.js"></script>
     <script src="/js/pages/paginadeperfil.page.js"></script>
     <script src="/js/pages/sgddedu/editor.page.js"></script>
     <script src="/js/pages/sobre.page.js"></script>

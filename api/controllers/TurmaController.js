@@ -6,7 +6,13 @@
  */
 
 module.exports = {
-  
+  fn: async function (inputs, exits) {
+
+    var turmas = await Turma.find({admin: req.me.id}); 
+    sails.log.debug(turmas);
+    return {turmas: turmas};
+
+  }
 
 };
 
