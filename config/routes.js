@@ -15,8 +15,8 @@ module.exports.routes = {
   //  ║║║║╣ ╠╩╗╠═╝╠═╣║ ╦║╣ ╚═╗
   //  ╚╩╝╚═╝╚═╝╩  ╩ ╩╚═╝╚═╝╚═╝
   'GET /':                   { action: 'view-homepage-or-redirect' },
-  'GET /welcome':            { action: 'dashboard/view-welcome' },
-  
+  'GET /welcome':            { action: 'dashboard/view-welcome'}, 
+
   'GET /faq':                { view:   'pages/faq' },
   'GET /legal/terms':        { view:   'pages/legal/terms' },
   'GET /legal/privacy':      { view:   'pages/legal/privacy' },
@@ -37,9 +37,10 @@ module.exports.routes = {
   'GET /sobre':              { action: 'view-sobre' },
   'GET /editor':             { action: 'sgddedu/view-editor' },
   'GET /paginadeperfil':     { action: 'view-paginadeperfil' },
-  'GET /turmas':             { action: 'view-turmas' },
-  'GET /iniciodesenvolvedor': { action: 'view-iniciodesenvolvedor'},
 
+  'GET /iniciodesenvolvedor': { action: 'view-iniciodesenvolvedor'},
+  'GET /turmas':             { action: 'turmas/view-turmas' },
+  'POST /turmas':            { action: 'turmas/turmas'},
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
