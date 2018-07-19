@@ -39,6 +39,10 @@ parasails.registerPage('editor', {
       if(n == 3){
         return "ad";
       }
+     else
+      if(n == 4){
+        return "op";
+      }
 },
 
   
@@ -61,7 +65,7 @@ parasails.registerPage('editor', {
 
 appendText: function(opc) {
     var str= this.opcao(opc);
-    var txt= '[ ]' + this.getSelected() + '; ';
+    var txt= '[ ] ' + this.getSelected() + '; ';
     $('#' + str).append('<p id="item">' + txt + '<button v-on:click="$emit(\'remove\')" class="btn btn-primary btn-xs">X</button></p>');
     this.getSelectionHtml(str);
 },
@@ -69,6 +73,7 @@ appendText: function(opc) {
 
            
 
+ 
  
 
 getSelectionHtml: function(identidade) {
@@ -85,6 +90,9 @@ getSelectionHtml: function(identidade) {
             }
             else if(identidade == "ad"){
             var textohtml = '<span style="background-color:lime;">' + range + '</span>';
+            }
+            else if(identidade == "op"){
+            var textohtml = '<span style="background-color:fuchsia;">' + range + '</span>';
             }
             range.deleteContents();
             

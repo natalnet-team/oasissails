@@ -15,35 +15,61 @@
   
   <div class="conteiner">
     <div class="row">
-      <div class="col-sm-3">
+      <div class="col-sm-12">
     
           <form action="Sgddedu/create" method="GET">
-           <input v-model="titulo" name="titulo" placeholder="Titulo"><br>
-           <input id="autor" v-bind:value="<%= me.id %>" name="autor" style="display:none"><br>
-           <textarea v-model="historia" name="historia" placeholder="Historia"></textarea><br>
-           <textarea v-model="jogo" name="jogo" placeholder="Jogo"></textarea><br>
-          
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="input-group">
+         <label for="comment">Titulo:</label>
+           <input v-model="titulo" name="titulo" class="form-control" placeholder="Titulo" ><br>
+        </div>  
+        
+        
+           <input id="autor" v-bind:value="<%= me.id %>" name="autor"  class="form-control" style="display:none"><br>
+        
+        <div class="input-group">
+         <label for="comment">História:</label>
+           <textarea v-model="historia" name="historia" rows="5" class="form-control" placeholder="Historia"></textarea><br>
+        </div> <br>
+        <div class="input-group">      
+         <label for="comment">Jogo:</label>
+           <textarea v-model="jogo" name="jogo" rows="5" class="form-control" placeholder="Jogo"></textarea><br>
+         </div> <br>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+                   
+          </form>   
+
             
-         </form>  
+           
       </div>
-      <div class="col-sm-6">
-         <h1>Titulo:{{ titulo }}</h1>
-         <h4><i>Autor(a):<%= me.fullName %></i></h4>
-         <h3>Historia</h3>
-         <p style="white-space: pre-line;">{{ historia }}</p>
-         <h3>Jogo</h3>
-         <p style="white-space: pre-line;" contenteditable= "true">{{ jogo }}</p>
-      </div>
-      
-      
-        <div class="col-sm-3">
+              <div class="col-sm-12">
+                 <h1>Titulo: {{ titulo }}</h1>
+                 <h4><i>Autor(a): <%= me.fullName %></i></h4>
+                 <h3>Historia</h3>
+                 <p>{{ historia }}</p>
+                 <h3>Jogo</h3>
+                 <p>{{ jogo }}</p>
+              </div>
+       
  
-<button v-on:click="appendText(1)">programação</button>
-<button v-on:click="appendText(2)">arte</button>
-<button v-on:click="appendText(3)">audio</button>
+        
+    </div>
+</div>
     
-      <div class="col-sm-12" >
+    <div class="conteiner">
+        <div class="row">
+            
+            <div class="col-sm-12">
+                
+                 <div class="col-sm-12">
+ 
+                    <button v-on:click="appendText(1)">programação</button>
+                    <button v-on:click="appendText(2)">arte</button>
+                    <button v-on:click="appendText(3)">aúdio</button>
+                    <button v-on:click="appendText(4)">Objetivo Pedagogico</button>
+                  </div> 
+                
+                  <div class="col-sm-4" >
       
        <div class="panel-group">
           <div class="panel panel-default" >
@@ -55,7 +81,7 @@
     
    
    
-     <div class="col-sm-12" >
+     <div class="col-sm-4" >
       
           <div class="panel-group">
             <div class="panel panel-default" >
@@ -67,7 +93,7 @@
       
     
     
-      <div class="col-sm-12" >
+      <div class="col-sm-4" >
       	
        <div class="panel-group">
         <div class="panel panel-default" >
@@ -78,15 +104,42 @@
         
       </div>
     
+            
+    <div class="col-sm-12" >
+      	
+       <div class="panel-group">
+        <div class="panel panel-default" >
+           <div class="panel-heading" style="background-color: fuchsia; ">Objetivo Pedagogivo</div>        
+            <div  class="panel-body" >
+                <div id="op" class="col-sm-4" ></div>
+                <div class="col-sm-8" style="background-color: black; border-style: solid; border-width: 2px;" ><h4 style="color: white"> Disciplina - serie</h4>
+                    <div class="col-sm-12">
+                        <div class="col-sm-4"style="background-color: lightgray; border-style: solid; border-width: 2px;" >Unidade Temática<div class="col-sm-12" style="background-color: white" ></div></div>
+                        
+                        <div class="col-sm-4"style="background-color: lightgray; border-style: solid; border-width: 2px;" >Objetos de Conhecimento<div class="col-sm-12" style="background-color: white" ></div></div>
+                        
+                        <div class="col-sm-4"style="background-color: lightgray; border-style: solid; border-width: 2px;" >Habilidades<div class="col-sm-12" style="background-color: white" ></div></div>
+                    </div>
+                </div>
+            
+            
+            </div>      
+              </div>
+         </div>
+        </div>
+        
+                
+                
+      </div>
+        
+      </div>
            
-  </div>
-      
-      
+                
+            </div>    
+        </div>
     </div>
 
-  
 
-      </div>
   </div>  
   </body>
       
