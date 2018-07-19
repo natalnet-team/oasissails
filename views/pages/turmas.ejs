@@ -8,23 +8,54 @@
         <h4>Minhas Turmas</h4>
       </div>
       <!--SE ESTIVER COM O PERFIL DE PROFESSOR, MOSTRA A OPÇÃO DE CRIAR TURMA-->
-      <div v-if="me.perfil === 'professor'" class="col-sm-6">
-        <a class="btn btn-sm btn-outline-info account-settings-button" href="#">Criar turma</a>
+      <div class="col-sm-6">
+        <button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#modal" href="#">Criar turma</button>
+        <!-- Modal -->
+      <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitle">Criar turma</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form action="turmas" method="POST">
+                Nome: <input type="textarea" class="form-control" name="nome"></input><br>
+                <input type="hidden" name="admin" value="<%= me.id %>" style="display: none"></input>
+                Descrição: <input type="textarea" class="form-control" name="descricao"></input><br>
+                Código: <input type="textarea" class="form-control" name="codigo"></input><br>
+                <!-- ** LEMBRETE ** 
+                Gerar codigo automaticamente -->
+                <input type="hidden" name="_csrf" value="<%- _csrf %>" />
+                <button type="submit" onclick="" class="btn btn-primary">Save changes</button>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              
+            </div>
+          </div>
+        </div>
       </div>
+      </div>
+
     </div>
     <div class="row">
-      <div title="Clique para ver detalhes sobre a turma" class="card m-3">
-        <div class="card-header">Nome da turma</div>
-        <div class="card-body">Descrição</div>
+      <div v-for="turma_own in turmas_own" href="">
+        <div title="Clique para ver detalhes sobre a turma" class="card m-3">
+          <div class="card-header bg-success">{{ turma_own.nome }}</div>
+          <div class="card-body">{{ turma_own.descricao }}</div>
+        </div>
       </div>
-      <div title="Clique para ver detalhes sobre a turma" class="card m-3">
-        <div class="card-header">Nome da turma</div>
-        <div class="card-body">Descrição</div>
+      <div v-for="turma in turmas" href="">
+        <div title="Clique para ver detalhes sobre a turma" class="card m-3">
+          <div class="card-header bg-info">{{ turma.nome }}</div>
+          <div class="card-body">{{ turma.descricao }}</div>
+        </div>
       </div>
-      <div title="Clique para ver detalhes sobre a turma" class="card m-3">
-        <div class="card-header">Nome da turma</div>
-        <div class="card-body">Descrição</div>
-      </div>
+     
     </div>
   </div>
 </div>
