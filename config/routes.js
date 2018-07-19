@@ -40,6 +40,9 @@ module.exports.routes = {
   'GET /turmas':             { action: 'turmas/view-turmas' },
   'GET /listturma':          { action: 'partial/view-listturma'},
   'POST /turmas':            { action: 'turmas/turmas'},
+  'POST /game/upload':       { action: 'Game/upload'},
+  'GET /game/upload':        { action: 'Game/upload'},
+  'GET /sendgame':           { action: 'view-sendgame'},
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝

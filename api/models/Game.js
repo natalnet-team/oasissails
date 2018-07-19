@@ -15,6 +15,7 @@ module.exports = {
     
     autor: {
       model: 'User',
+      required: true,
     },
     
     disciplina: {
@@ -38,7 +39,16 @@ module.exports = {
       example: 'império romano',
     },
   
+    nome: {
+      type: 'string',
+      required: true,
+    },
 
+    gamefd: {
+      type: 'string',
+      required: true,
+      unique: true,
+    }
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
