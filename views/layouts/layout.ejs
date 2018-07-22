@@ -9,7 +9,6 @@
     <% /*
         Stylesheets
         ========================
-
         Stylesheets can be hard-coded as «link» tags, automatically injected
         by the asset pipeline between "STYLES" and "STYLES END", or both.
         (https://sailsjs.com/docs/concepts/assets/task-automation)
@@ -85,7 +84,6 @@
         </div>
       </div>
       <% } %>
-
       <% if (me) { %>
       <div class="col-md-10 offset-md-2">
       <%- body %>
@@ -93,7 +91,6 @@
       <% } else{ %>
       <%- body %>
       <% } %>
-
       <footer id="page-footer" class="navbar navbar-light justify-content-between flex-row-reverse">
         <div class="nav">
           <small class="nav-item"><a class="nav-link text-info" href="/contact">Contact<span class="d-none d-sm-inline"> us</span></a></small>
@@ -106,12 +103,9 @@
         <small class="copy">Copyright &copy; 2018 NEW_APP_COMPANY. <br class="xs-only"/>All rights reserved.</small>
       </footer>
     </div>
-
-
     <% /*
       Client-side JavaScript
       ========================
-
       Scripts can be hard-coded as «script» tags, automatically injected
       by the asset pipeline between "SCRIPTS" and "SCRIPTS END", or both.
       (https://sailsjs.com/docs/concepts/assets/task-automation)
@@ -119,11 +113,9 @@
     
     <% /* Load Stripe Checkout */ %>
     <script src="https://checkout.stripe.com/checkout.js"></script>
-
     <% /* Delete the global `self` to help avoid client-side bugs.
     (see https://developer.mozilla.org/en-US/docs/Web/API/Window/self) */ %>
     <script>delete window.self;</script>
-
     <% /* Auto-injected «script» tags: */ %>
     <!--SCRIPTS-->
     <script src="/dependencies/sails.io.js"></script>
@@ -155,9 +147,9 @@
     <script src="/js/pages/iniciodesenvolvedor.page.js"></script>
     <script src="/js/pages/legal/privacy.page.js"></script>
     <script src="/js/pages/legal/terms.page.js"></script>
+    <script src="/js/pages/nav.page.js"></script>
     <script src="/js/pages/paginadeperfil.page.js"></script>
     <script src="/js/pages/sendgame.page.js"></script>
-    <script src="/js/pages/sendGame.page.js"></script>
     <script src="/js/pages/sgddedu/editor.page.js"></script>
     <script src="/js/pages/sobre.page.js"></script>
     <script src="/js/pages/turmas.page.js"></script>
