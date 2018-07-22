@@ -1,0 +1,22 @@
+<div id="send-game" v-cloak>
+
+	<div class="container">
+      <h1>Lançar novo jogo</h1>
+    <hr/>
+    
+    <form action="sendgame" enctype="multipart/form-data" method="POST">
+    nome: <input type="text" name="nome"><br>
+    disciplina: <input type="text" name="disciplina"><br>
+    serie: <input type="text" name="serie"><br>
+    assunto: <input type="text" name="conteudo"><br>
+    <input type="hidden" name="autor" value="<%= me.id %>" style="display: none"></input>
+    <input type="file" name="game" multiple="multiple"><br>
+    <input type="hidden" name="_csrf" value="<%- _csrf %>" />
+    <input type="submit" value="Upload">
+    </form>
+    
+  	</div>
+
+</div>
+ 	
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
