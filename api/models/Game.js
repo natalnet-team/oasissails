@@ -13,6 +13,17 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     
+    nome: {
+      type:'string',
+      required: true,      
+    },
+
+    descricao: {
+      type: 'string',
+      required: true,
+      description: 'Descrição do jogo',
+    },
+
     autor: {
       model: 'User',
       required: true,
@@ -39,9 +50,10 @@ module.exports = {
       example: 'império romano',
     },
   
-    nome: {
-      type: 'string',
-      required: true,
+    documento: {
+      model: 'Sgddedu',      
+  //   unique: true,
+  //    required: true,
     },
 
     gamefd: {
