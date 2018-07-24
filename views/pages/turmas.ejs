@@ -7,7 +7,6 @@
       <div title="Turmas em que você está" class="col-sm-6">
         <h4>Minhas Turmas</h4>
       </div>
-      <!--SE ESTIVER COM O PERFIL DE PROFESSOR, MOSTRA A OPÇÃO DE CRIAR TURMA-->
       <div class="col-sm-6">
         <button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#modal" href="#">Criar turma</button>
         <!-- Modal -->
@@ -44,19 +43,40 @@
     </div>
     <div class="row">
       <div v-for="turma_own in turmas_own" href="">
-        <div title="Clique para ver detalhes sobre a turma" class="card m-3">
+        <div @click="selecionada = turma_own" title="Clique para ver detalhes sobre a turma" class="card m-3">
           <div class="card-header bg-success">{{ turma_own.nome }}</div>
           <div class="card-body">{{ turma_own.descricao }}</div>
         </div>
       </div>
       <div v-for="turma in turmas" href="">
-        <div title="Clique para ver detalhes sobre a turma" class="card m-3">
+        <div @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
           <div class="card-header bg-info">{{ turma.nome }}</div>
           <div class="card-body">{{ turma.descricao }}</div>
         </div>
       </div>
-     
     </div>
+<!--MOSTRA INFORMAÇÕES SOBRE UMA TURMA SELECIONADA-->
+  <div class="row" v-if="selecionada !== '' ">
+    <div class="col-sm-6">
+        <h3>{{ selecionada.nome }}</h3>
+        <!--BOTÕES PARA AÇÕES DE TURMA-->
+        <div class="btn-group">
+          <button title="Fechar detalhes" @click="selecionada = '' " class="btn btn-sm btn-info">Fechar</button>
+          <button title="Adicionar participante" class="btn btn-sm btn-primary">Adicionar</button>
+          <button title="Remover participante" class="btn btn-sm btn-success">Remover</button>
+          <button title="Excluir turma" v-if="selecionada.admin === <%= me.id %>"
+                  type="submit" form="excluir" class="btn btn-sm btn-danger">Excluir</button>
+        </div>
+        <!--FORMS PARA AÇÕES DE TURMA-->
+        <form method="post" action="turmas/excluir" id="excluir">
+            <input type="hidden" name="turmaid" :value="selecionada.id">
+            <input type="hidden" name="_csrf" value="<%- _csrf %>" />
+        </form>
+      
+        <div>{{ selecionada.descricao }}</div>
+    </div>
+  </div>
+
   </div>
 </div>
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
@@ -67,7 +87,6 @@
  •- assets/styles/pages/turmas.less
  •- assets/js/pages/turmas.page.js
 
-<h1>TODO: Implement this page.</h1>
   <p>(See also <em>assets/styles/pages/turmas.less</em>, <em>assets/js/pages/turmas.page.js</em>, and <em>api/controllers/view-turmas.js</em>.)</p>
 
 -->
