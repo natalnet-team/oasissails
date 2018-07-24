@@ -38,18 +38,18 @@ module.exports.routes = {
   'GET /editor':             { action: 'sgddedu/view-editor' },
 
   'GET /homepageusuario':    { action: 'view-homepageusuario' },
-  'GET /game':               { action: 'view-game' },
+  //'GET /game':               { action: 'view-game' },
 
   'GET /paginadeperfil':     { action: 'view-paginadeperfil' },
 
   'GET /iniciodesenvolvedor': { action: 'view-iniciodesenvolvedor'},
-  
+
   'GET /turmas':             { action: 'turmas/view-turmas' },
   'POST /turmas':            { action: 'turmas/turmas'},
 
-  'GET /listarjogos':         { action: 'view-listargames' },
+  'GET /listarjogos':        { action: 'view-listargames' },
 
-  'POST /game/upload':       { action: 'Game/upload'},
+  'POST /sendgame':          { action: 'Game/upload'},
   'GET /sendgame':           { action: 'view-sendgame'},
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗

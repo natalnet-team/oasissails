@@ -1,19 +1,62 @@
 <div id="sendgame" v-cloak>
 
-  <h1>TODO: Implement this page.</h1>
-  <form id="uploadForm"
-      enctype="multipart/form-data"
-      action="/game/upload"
-      method="post">
-      	<input type="hidden" name="autor" value="<%= me.id %>"/>
-      	disciplina: <input type="textarea" name="disciplina" />
-      	serie: <input type="textarea" name="serie" />
-      	conteudo: <input type="textarea" name="conteudo" />
-      	nome: <input type="textarea" name="nome" />,
-    	<input type="file" name="game" />
-    	<input type="hidden" name="_csrf" value="<%- _csrf %>" />
-    	<input type="submit" value="submit"/>
-</form>
+  <div class="container">
+      <h1>Lançar novo jogo</h1>
+    <hr/>
+    
+    <ajax-form  action="sendgame" enctype="multipart/form-data" method="POST" :handle-parsing="handleParsingForm">
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="nome">Informe o nome do seu jogo: </label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="nome" id="nome" placeholder="insira o nome do jogo..." class="[formErrors.nome ? 'is-invalid' : '']" v-model.trim="formData.nome"/>
+          <div class="invalid-feedback" v-if="formErrors.nome">Informe um nome válido</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="descricao">Descreva o seu jogo: </label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="descricao" id="descricao" placeholder="insira a descrição do jogo..." class="[formErrors.descricao ? 'is-invalid' : '']" v-model.trim="formData.descricao"/>
+          <div class="invalid-feedback" v-if="formErrors.descricao">Insira uma descrição</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="disciplina">Qual disciplina ele aborda? </label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="disciplina" id="disciplina" placeholder="insira a disciplina..." class="[formErrors.disciplina ? 'is-invalid' : '']" v-model.trim="formData.disciplina"/>
+          <div class="invalid-feedback" v-if="formErrors.disciplina">Informe uma disciplina válida</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="serie">Qual a série alvo? </label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="serie" id="serie" placeholder="insira a série..." class="[formErrors.serie ? 'is-invalid' : '']" v-model.trim="formData.serie"/>
+          <div class="invalid-feedback" v-if="formErrors.serie">Informe uma série válida</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="conteudo">Quais assuntos seu jogo abrange? </label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="conteudo" id="conteudo" placeholder="insira os conteúdos..." class="[formErrors.conteudo ? 'is-invalid' : '']" v-model.trim="formData.conteudo"/>
+          <div class="invalid-feedback" v-if="formErrors.conteudo">Informe os assuntos</div>
+        </div>
+      </div>
+        <input type="hidden" name="autor" value="<%= me.id %>" style="display: none" />
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Escolha o arquivo compactado: </label>
+        <div class="col-sm-9">
+          <input class="form-control-file btn-active" type="file" onchange="Exttest(this)" name="game" multiple="multiple" class="[formErrors.game ? 'is-invalid' : '']" />
+          <div class="invalid-feedback" v-if="formErrors.game">Insira um arquivo válido (".rar" ou ".zip")</div>
+        </div>
+      </div>
+        <input type="hidden" name="_csrf" value="<%- _csrf %>" />
+      <div class="form-group row">
+        <div class="col-sm-4 offset-sm-3">
+        <ajax-button class="form-control btn-success" type="submit" >Upload</ajax-button>
+        </div>
+      </div>
+    </ajax-form>
+    
+    </div>
 
 </div>
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
