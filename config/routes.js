@@ -41,6 +41,7 @@ module.exports.routes = {
   'GET /iniciodesenvolvedor': { action: 'view-iniciodesenvolvedor'},
   'GET /turmas':             { action: 'turmas/view-turmas' },
   'POST /turmas':            { action: 'turmas/turmas'},
+  'POST /excluirturma':      { action: 'turmas/excluir' },
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗

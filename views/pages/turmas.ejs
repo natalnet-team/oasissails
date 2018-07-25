@@ -42,13 +42,13 @@
 
     </div>
     <div class="row">
-      <div v-for="turma_own in turmas_own" href="">
-        <div @click="selecionada = turma_own" title="Clique para ver detalhes sobre a turma" class="card m-3">
-          <div class="card-header bg-success">{{ turma_own.nome }}</div>
-          <div class="card-body">{{ turma_own.descricao }}</div>
+      <div v-for="turma in turmas_own">
+        <div @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
+          <div class="card-header bg-success">{{ turma.nome }}</div>
+          <div class="card-body">{{ turma.descricao }}</div>
         </div>
       </div>
-      <div v-for="turma in turmas" href="">
+      <div v-for="turma in turmas">
         <div @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
           <div class="card-header bg-info">{{ turma.nome }}</div>
           <div class="card-body">{{ turma.descricao }}</div>
@@ -68,7 +68,7 @@
                   type="submit" form="excluir" class="btn btn-sm btn-danger">Excluir</button>
         </div>
         <!--FORMS PARA AÇÕES DE TURMA-->
-        <form method="post" action="turmas/excluir" id="excluir">
+        <form method="POST" action="excluirturma" id="excluir">
             <input type="hidden" name="turmaid" :value="selecionada.id">
             <input type="hidden" name="_csrf" value="<%- _csrf %>" />
         </form>
