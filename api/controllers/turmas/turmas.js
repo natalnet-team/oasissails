@@ -52,25 +52,27 @@ module.exports = {
       viewTemplatePath: 'pages/turmas'
     },
     redirect: {
-      description: 'The requesting user is already logged in.',
       responseType: 'redirect'
     }
   },
 
   fn: async function (inputs, exits) {
+    //TO DO: USAR this.req.me.id PARA ADMIN
   	var newTurmaRecord = await Turma.create(Object.assign({
   		nome: inputs.nome,
   		admin: inputs.admin,
   		descricao: inputs.descricao,
-  		codigo: inputs.descricao
+  		codigo: inputs.codigo
   	}));
   	sails.log.debug(newTurmaRecord);
 
 
-    var turmas_own = await Turma.find({admin: this.req.me.id}); 
-    var assist = await this.req.me.turma_part;
-    var turmas = await Turma.find({id: assist});
-    return exits.success({me: this.req.me, turmas_own: turmas_own, turmas: turmas});
+    //var turmas_own = await Turma.find({admin: this.req.me.id}); 
+    // var assist = await this.req.me.turma_part;
+    // var turmas = await Turma.find({id: assist});
+    // var turmas = {};
+    // return exits.success({me: this.req.me, turmas_own: turmas_own, turmas: turmas});
+    throw {redirect: '/turmas'};
     
 
   	

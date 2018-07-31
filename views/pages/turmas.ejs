@@ -41,8 +41,9 @@
       </div>
 
     </div>
+    <!--CARDS DE TURMA-->
     <div class="row">
-      <div v-for="turma in turmas_own">
+      <!-- <div v-for="turma in turmas_own">
         <div @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
           <div class="card-header bg-success">{{ turma.nome }}</div>
           <div class="card-body">{{ turma.descricao }}</div>
@@ -53,18 +54,27 @@
           <div class="card-header bg-info">{{ turma.nome }}</div>
           <div class="card-body">{{ turma.descricao }}</div>
         </div>
+      </div> -->
+
+      <div v-for="turma in turmas">
+        <div @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
+          <div :class="[turma.admin.id === me.id ? 'bg-success' : 'bg-info', 'card-header']">{{ turma.nome }}</div>
+          <div class="card-body">{{ turma.descricao }}</div>
+        </div>
       </div>
+
     </div>
+
 <!--MOSTRA INFORMAÇÕES SOBRE UMA TURMA SELECIONADA-->
   <div class="row" v-if="selecionada !== '' ">
     <div class="col-sm-6">
-        <h3>{{ selecionada.nome }}</h3>
+        <h3>{{ selecionada.nome }} - ID: {{ selecionada.id }}</h3>
         <!--BOTÕES PARA AÇÕES DE TURMA-->
         <div class="btn-group">
           <button title="Fechar detalhes" @click="selecionada = '' " class="btn btn-sm btn-info">Fechar</button>
           <button title="Adicionar participante" class="btn btn-sm btn-primary">Adicionar</button>
           <button title="Remover participante" class="btn btn-sm btn-success">Remover</button>
-          <button title="Excluir turma" v-if="selecionada.admin === <%= me.id %>"
+          <button title="Excluir turma" v-if="selecionada.admin.id === me.id"
                   type="submit" form="excluir" class="btn btn-sm btn-danger">Excluir</button>
         </div>
         <!--FORMS PARA AÇÕES DE TURMA-->
@@ -73,7 +83,7 @@
             <input type="hidden" name="_csrf" value="<%- _csrf %>" />
         </form>
       
-        <div>{{ selecionada.descricao }}</div>
+        <div>{{ selecionada }}</div>
     </div>
   </div>
 
