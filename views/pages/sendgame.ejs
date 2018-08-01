@@ -1,10 +1,10 @@
 <div id="sendgame" v-cloak>
 
-  <div class="container">
+  <div class="container mt-3">
       <h1>Lançar novo jogo</h1>
     <hr/>
     
-    <ajax-form  action="sendgame" enctype="multipart/form-data" method="POST" :handle-parsing="handleParsingForm">
+    <ajax-form  action="sendgame" enctype="multipart/form-data" :form-data="formData" :form-rules="formRules" :form-errors.sync="formErrors" method="POST">
       <div class="form-group row">
         <label class="col-sm-3 col-form-label" for="nome">Informe o nome do seu jogo: </label>
         <div class="col-sm-9">
@@ -44,7 +44,7 @@
       <div class="form-group row">
         <label class="col-sm-3 col-form-label">Escolha o arquivo compactado: </label>
         <div class="col-sm-9">
-          <input class="form-control-file btn-active" type="file" onchange="Exttest(this)" name="game" multiple="multiple" class="[formErrors.game ? 'is-invalid' : '']" />
+          <input class="form-control-file btn-active" type="file" accept=".rar" name="game" multiple="multiple" class="[formErrors.game ? 'is-invalid' : '']" />
           <div class="invalid-feedback" v-if="formErrors.game">Insira um arquivo válido (".rar" ou ".zip")</div>
         </div>
       </div>
