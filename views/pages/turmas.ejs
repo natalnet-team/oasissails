@@ -1,14 +1,14 @@
 <div id="turmas" v-cloak>
   <div class="container">
       <h1>Turmas</h1>
-    <hr/>
+<!--     <hr/> -->
     <!--TURMAS EM QUE O USUÁRIO ESTÁ APARECERIAM AQUI-->
     <div class="row">
-      <div title="Turmas em que você está" class="col-sm-6">
+<!--       <div title="Turmas em que você está" class="col-sm-6">
         <h4>Minhas Turmas</h4>
-      </div>
+      </div> -->
       <div class="col-sm-6">
-        <button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#modal" href="#">Criar turma</button>
+<!--         <button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#modal" href="#">Criar turma</button> -->
         <!-- Modal -->
       <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -41,30 +41,44 @@
       </div>
 
     </div>
+
+
+
     <!--CARDS DE TURMA-->
-    <div class="row">
-      <!-- <div v-for="turma in turmas_own">
-        <div @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
-          <div class="card-header bg-success">{{ turma.nome }}</div>
-          <div class="card-body">{{ turma.descricao }}</div>
+<!--     <div class="row"> -->
+      <!---->
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a title="Turmas em que você está" class="nav-link active" data-toggle="tab" href="#minhasturmas">Minhas turmas</a>
+        </li>
+        <li class="nav-item">
+          <a @click="mostrarTodas" title="Todas as turmas" class="nav-link" data-toggle="tab" href="#todas">Todas</a>
+        </li>
+        <button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#modal" href="#">Criar turma</button>
+      </ul>
+      
+      <!-- Tab panes -->
+      <div class="row tab-content">
+        <div  id="minhasturmas" class="tab-pane active">
+            <div v-for="turma in turmas" @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
+              <div :class="[turma.admin.id === me.id ? 'bg-success' : 'bg-info', 'card-header']">{{ turma.nome }}</div>
+              <div class="card-body">{{ turma.descricao }}</div>
+            </div>
+          
+        </div>
+        <div id="todas" class="tab-pane" >
+          <div v-if="todas !== '' ">
+          {{todas}}
+            </div>
+<!--             <div v-for="turma in todas" @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
+              <div :class="[turma.admin.id === me.id ? 'bg-success' : 'bg-primary', 'card-header']">{{ turma.nome }}</div>
+              <div class="card-body">{{ turma.descricao }}</div>
+            </div> -->
+          
         </div>
       </div>
-      <div v-for="turma in turmas">
-        <div @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
-          <div class="card-header bg-info">{{ turma.nome }}</div>
-          <div class="card-body">{{ turma.descricao }}</div>
-        </div>
-      </div> -->
-
-      <div v-for="turma in turmas">
-        <div @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
-          <div :class="[turma.admin.id === me.id ? 'bg-success' : 'bg-info', 'card-header']">{{ turma.nome }}</div>
-          <div class="card-body">{{ turma.descricao }}</div>
-        </div>
-      </div>
-
-    </div>
-
+<!--row-->
 <!--MOSTRA INFORMAÇÕES SOBRE UMA TURMA SELECIONADA-->
   <div class="row" v-if="selecionada !== '' ">
     <div class="col-sm-6">
@@ -98,5 +112,19 @@
  •- assets/js/pages/turmas.page.js
 
   <p>(See also <em>assets/styles/pages/turmas.less</em>, <em>assets/js/pages/turmas.page.js</em>, and <em>api/controllers/view-turmas.js</em>.)</p>
+
+
+<div v-for="turma in turmas_own">
+        <div @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
+          <div class="card-header bg-success">{{ turma.nome }}</div>
+          <div class="card-body">{{ turma.descricao }}</div>
+        </div>
+      </div>
+      <div v-for="turma in turmas">
+        <div @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
+          <div class="card-header bg-info">{{ turma.nome }}</div>
+          <div class="card-body">{{ turma.descricao }}</div>
+        </div>
+      </div>
 
 -->
