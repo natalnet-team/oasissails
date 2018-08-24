@@ -35,5 +35,9 @@ parasails.registerPage('turmas', {
       });
     },//
     
+    isInTurma: async function(turma){
+      //
+    }
+    
   }
 });

@@ -8,11 +8,6 @@ module.exports = {
 
 
   inputs: {
-  	userid: {
-  		type: 'number',
-  		required: true,
-  	},
-
   	turmaid: {
   		type: 'number',
   		required: true,
@@ -35,7 +30,8 @@ module.exports = {
 
   fn: async function (inputs, exits) {
   	//TO DO: USAR this.req.me.id (?)
-  	var adicionar = await Turma.addToCollection(inputs.turmaid, 'participantes', inputs.userid);
+    //TO DO: VERIFICAR SE A TURMA EXISTE
+  	var adicionar = await Turma.addToCollection(inputs.turmaid, 'participantes', this.req.me.id);
 
     throw {redirect: '/turmas'};
     //return exits.success();

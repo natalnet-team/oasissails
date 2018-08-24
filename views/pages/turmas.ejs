@@ -60,23 +60,23 @@
       
       <!-- Tab panes -->
       <div class="row tab-content">
+        
         <div  id="minhasturmas" class="tab-pane active">
             <div v-for="turma in turmas" @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
               <div :class="[turma.admin.id === me.id ? 'bg-success' : 'bg-info', 'card-header']">{{ turma.nome }}</div>
               <div class="card-body">{{ turma.descricao }}</div>
             </div>
-          
         </div>
+        
         <div id="todas" class="tab-pane" >
           <div v-if="todas !== '' ">
-          {{todas}}
-            </div>
-<!--             <div v-for="turma in todas" @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
-              <div :class="[turma.admin.id === me.id ? 'bg-success' : 'bg-primary', 'card-header']">{{ turma.nome }}</div>
-              <div class="card-body">{{ turma.descricao }}</div>
-            </div> -->
-          
+              <div v-for="turma in todas" @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
+                <div :class="[turma.admin.id === me.id ? 'bg-success' : 'bg-primary', 'card-header']">{{ turma.nome }}</div>
+                <div class="card-body">{{ turma.descricao }}</div>
+              </div>
+           </div>
         </div>
+        
       </div>
 <!--row-->
 <!--MOSTRA INFORMAÇÕES SOBRE UMA TURMA SELECIONADA-->
@@ -86,18 +86,35 @@
         <!--BOTÕES PARA AÇÕES DE TURMA-->
         <div class="btn-group">
           <button title="Fechar detalhes" @click="selecionada = '' " class="btn btn-sm btn-info">Fechar</button>
-          <button title="Adicionar participante" class="btn btn-sm btn-primary">Adicionar</button>
-          <button title="Remover participante" class="btn btn-sm btn-success">Remover</button>
-          <button title="Excluir turma" v-if="selecionada.admin.id === me.id"
-                  type="submit" form="excluir" class="btn btn-sm btn-danger">Excluir</button>
+          <button title="Adicionar participante" type="submit" form="adicionar" class="btn btn-sm btn-primary">
+<!--             {{ isInTurma(selecionada) ? 'Sair' : 'Entrar' }} -->
+            Entrar
+          </button>
+<!--           <button title="Remover participante" class="btn btn-sm btn-success">Remover</button> -->
+          <button title="Excluir turma" v-if="selecionada.admin.id === me.id" type="submit" form="excluir" class="btn btn-sm btn-danger">Excluir</button>
         </div>
         <!--FORMS PARA AÇÕES DE TURMA-->
         <form method="POST" action="excluirturma" id="excluir">
             <input type="hidden" name="turmaid" :value="selecionada.id">
             <input type="hidden" name="_csrf" value="<%- _csrf %>" />
         </form>
+        <form method="POST" action="addparticipante" id="adicionar">
+            <input type="hidden" name="turmaid" :value="selecionada.id">
+            <input type="hidden" name="_csrf" value="<%- _csrf %>" />
+        </form>
       
-        <div>{{ selecionada }}</div>
+      
+        <!--INFORMAÇÕES-->
+        <div> <b>Admin:</b> {{ selecionada.admin.fullName }}</div>
+        <b>Participantes:</b> <span v-for="participante in selecionada.participantes">{{ participante.fullName }}, </span>
+        <br>
+        <b>Descrição:</b> <br>
+        <div>{{ selecionada.descricao }}</div>
+        <!--TO DO: LISTA DE GAMES-->
+        <div>
+          <b>Games:</b> <br>
+          {{ selecionada.games === null ? 'Não há games nesta turma ainda' : 'Lista' }}
+        </div>
     </div>
   </div>
 
@@ -112,19 +129,4 @@
  •- assets/js/pages/turmas.page.js
 
   <p>(See also <em>assets/styles/pages/turmas.less</em>, <em>assets/js/pages/turmas.page.js</em>, and <em>api/controllers/view-turmas.js</em>.)</p>
-
-
-<div v-for="turma in turmas_own">
-        <div @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
-          <div class="card-header bg-success">{{ turma.nome }}</div>
-          <div class="card-body">{{ turma.descricao }}</div>
-        </div>
-      </div>
-      <div v-for="turma in turmas">
-        <div @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
-          <div class="card-header bg-info">{{ turma.nome }}</div>
-          <div class="card-body">{{ turma.descricao }}</div>
-        </div>
-      </div>
-
 -->
