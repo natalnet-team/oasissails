@@ -17,9 +17,9 @@ module.exports = {
 
 
   exits: {
-  	success: {
-      viewTemplatePath: 'pages/turmas'
-    },
+//   	success: {
+//       viewTemplatePath: 'pages/turmas'
+//     },
 
     redirect: {
     	responseType: 'redirect'
@@ -29,12 +29,11 @@ module.exports = {
 
 
   fn: async function (inputs, exits) {
-  	//TO DO: USAR this.req.me.id (?)
-    //TO DO: VERIFICAR SE A TURMA EXISTE
-  	var adicionar = await Turma.addToCollection(inputs.turmaid, 'participantes', this.req.me.id);
+    var turma = await Turma.findOne({id: inputs.turmaid});
+    //TO DO: VERIFICAR CODIGO
+  	var adicionar = await Turma.addToCollection(turma.id, 'participantes', this.req.me.id);
 
     throw {redirect: '/turmas'};
-    //return exits.success();
 
   }
 

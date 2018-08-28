@@ -27,15 +27,12 @@ module.exports = {
 
 
   fn: async function (inputs, exits) {
-    //TO DO: CHECAR ADMIN
-    var excluir = await Turma.destroy({id: inputs.turmaid});
-    //sails.log.debug('turma de id %s excluida', inputs.turmaid)
+    var turma = await Turma.findOne({id: inputs.turmaid}).populate('admin');
     
-    // var turmas_own = await Turma.find({admin: this.req.me.id}); 
-    // // var assist = await this.req.me.turma_part;
-    // // var turmas = await Turma.find({id: assist});
-    // var turmas = {};
-    // return exits.success({me: this.req.me, turmas_own: turmas_own, turmas: turmas});
+    if(turma.admin.id == this.req.me.id){
+      var excluir = await Turma.destroy({id: turma.id});
+    }
+    
     throw {redirect: '/turmas'};
 
   }

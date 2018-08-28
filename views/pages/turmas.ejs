@@ -1,12 +1,9 @@
 <div id="turmas" v-cloak>
   <div class="container">
       <h1>Turmas</h1>
-<!--     <hr/> -->
     <!--TURMAS EM QUE O USUÁRIO ESTÁ APARECERIAM AQUI-->
     <div class="row">
-<!--       <div title="Turmas em que você está" class="col-sm-6">
-        <h4>Minhas Turmas</h4>
-      </div> -->
+      
       <div class="col-sm-6">
 <!--         <button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#modal" href="#">Criar turma</button> -->
         <!-- Modal -->
@@ -21,10 +18,9 @@
             </div>
             <div class="modal-body">
               <form action="turmas" method="POST">
-                Nome: <input type="textarea" class="form-control" name="nome"></input><br>
-                <input type="hidden" name="admin" value="<%= me.id %>" style="display: none"></input>
-                Descrição: <input type="textarea" class="form-control" name="descricao"></input><br>
-                Código: <input type="textarea" class="form-control" name="codigo"></input><br>
+                Nome: <input type="textarea" class="form-control" name="nome"></input><br />
+                Descrição: <input type="textarea" class="form-control" name="descricao"></input><br />
+                Código: <input type="textarea" class="form-control" name="codigo"></input><br />
                 <!-- ** LEMBRETE ** 
                 Gerar codigo automaticamente -->
                 <input type="hidden" name="_csrf" value="<%- _csrf %>" />
@@ -42,11 +38,7 @@
 
     </div>
 
-
-
     <!--CARDS DE TURMA-->
-<!--     <div class="row"> -->
-      <!---->
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
@@ -57,7 +49,7 @@
         </li>
         <button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#modal" href="#">Criar turma</button>
       </ul>
-      
+
       <!-- Tab panes -->
       <div class="row tab-content">
         
@@ -78,41 +70,41 @@
         </div>
         
       </div>
-<!--row-->
-<!--MOSTRA INFORMAÇÕES SOBRE UMA TURMA SELECIONADA-->
+
+ <!--MOSTRA INFORMAÇÕES SOBRE UMA TURMA SELECIONADA-->
   <div class="row" v-if="selecionada !== '' ">
     <div class="col-sm-6">
         <h3>{{ selecionada.nome }} - ID: {{ selecionada.id }}</h3>
         <!--BOTÕES PARA AÇÕES DE TURMA-->
         <div class="btn-group">
           <button title="Fechar detalhes" @click="selecionada = '' " class="btn btn-sm btn-info">Fechar</button>
-          <button title="Adicionar participante" type="submit" form="adicionar" class="btn btn-sm btn-primary">
-<!--             {{ isInTurma(selecionada) ? 'Sair' : 'Entrar' }} -->
-            Entrar
-          </button>
-<!--           <button title="Remover participante" class="btn btn-sm btn-success">Remover</button> -->
+          <button v-if="isInTurma(selecionada)" style="color:white" type="submit" form="remover" title="Remover participante" class="btn btn-sm btn-warning">Sair</button>
+          <button v-else title="Adicionar participante" type="submit" form="adicionar" class="btn btn-sm btn-primary">Entrar</button>
           <button title="Excluir turma" v-if="selecionada.admin.id === me.id" type="submit" form="excluir" class="btn btn-sm btn-danger">Excluir</button>
         </div>
         <!--FORMS PARA AÇÕES DE TURMA-->
         <form method="POST" action="excluirturma" id="excluir">
-            <input type="hidden" name="turmaid" :value="selecionada.id">
+            <input type="hidden" name="turmaid" :value="selecionada.id" />
             <input type="hidden" name="_csrf" value="<%- _csrf %>" />
         </form>
         <form method="POST" action="addparticipante" id="adicionar">
-            <input type="hidden" name="turmaid" :value="selecionada.id">
+            <input type="hidden" name="turmaid" :value="selecionada.id" />
             <input type="hidden" name="_csrf" value="<%- _csrf %>" />
         </form>
-      
+        <form method="POST" action="rmparticipante" id="remover">
+            <input type="hidden" name="turmaid" :value="selecionada.id" />
+            <input type="hidden" name="_csrf" value="<%- _csrf %>" />
+        </form>
       
         <!--INFORMAÇÕES-->
         <div> <b>Admin:</b> {{ selecionada.admin.fullName }}</div>
         <b>Participantes:</b> <span v-for="participante in selecionada.participantes">{{ participante.fullName }}, </span>
-        <br>
-        <b>Descrição:</b> <br>
+        <br />
+        <b>Descrição:</b> <br />
         <div>{{ selecionada.descricao }}</div>
         <!--TO DO: LISTA DE GAMES-->
         <div>
-          <b>Games:</b> <br>
+          <b>Games:</b> <br />
           {{ selecionada.games === null ? 'Não há games nesta turma ainda' : 'Lista' }}
         </div>
     </div>

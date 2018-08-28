@@ -44,6 +44,7 @@ module.exports.routes = {
   'POST /turmas':            { action: 'turmas/turmas'},
   'POST /excluirturma':      { action: 'turmas/excluir' },
   'POST /addparticipante':   { action: 'turmas/addparticipante' },
+  'POST /rmparticipante': { action: 'turmas/rmparticipante' },
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
