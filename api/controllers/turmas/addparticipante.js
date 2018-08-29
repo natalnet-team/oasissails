@@ -11,7 +11,11 @@ module.exports = {
   	turmaid: {
   		type: 'number',
   		required: true,
-  	}
+  	},
+    codigo: {
+      type: 'string',
+      required: true
+    },
 
   },
 
@@ -30,9 +34,11 @@ module.exports = {
 
   fn: async function (inputs, exits) {
     var turma = await Turma.findOne({id: inputs.turmaid});
-    //TO DO: VERIFICAR CODIGO
-  	var adicionar = await Turma.addToCollection(turma.id, 'participantes', this.req.me.id);
-
+    
+    if(inputs.codigo == turma.codigo){
+      var adicionar = await Turma.addToCollection(turma.id, 'participantes', this.req.me.id);
+    }
+    
     throw {redirect: '/turmas'};
 
   }

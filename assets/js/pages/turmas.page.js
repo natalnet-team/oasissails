@@ -4,7 +4,8 @@ parasails.registerPage('turmas', {
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: {
     selecionada: '',
-    todas: ''
+    todas: '',
+    codigo: ''
   },
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
@@ -44,7 +45,7 @@ parasails.registerPage('turmas', {
         }
       }
       return false;
-    }
-    
+    },
+   //…
   }
 });

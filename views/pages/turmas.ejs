@@ -1,7 +1,6 @@
 <div id="turmas" v-cloak>
   <div class="container">
       <h1>Turmas</h1>
-    <!--TURMAS EM QUE O USUÁRIO ESTÁ APARECERIAM AQUI-->
     <div class="row">
       
       <div class="col-sm-6">
@@ -20,9 +19,10 @@
               <form action="turmas" method="POST">
                 Nome: <input type="textarea" class="form-control" name="nome"></input><br />
                 Descrição: <input type="textarea" class="form-control" name="descricao"></input><br />
-                Código: <input type="textarea" class="form-control" name="codigo"></input><br />
-                <!-- ** LEMBRETE ** 
-                Gerar codigo automaticamente -->
+                Código: <input type="input" v-model="codigo" class="form-control" name="codigo"></input>
+<!--                 <span class="icon"> -->
+                  <i title="Gerar codigo automaticamente" class="fa fa-random fa-lg" @click="codigo = (Math.random()+1).toString(36).substring(7)"></i><br><br>
+<!--                 </span> -->
                 <input type="hidden" name="_csrf" value="<%- _csrf %>" />
                 <button type="submit" onclick="" class="btn btn-primary">Save changes</button>
               </form>
@@ -78,8 +78,8 @@
         <!--BOTÕES PARA AÇÕES DE TURMA-->
         <div class="btn-group">
           <button title="Fechar detalhes" @click="selecionada = '' " class="btn btn-sm btn-info">Fechar</button>
-          <button v-if="isInTurma(selecionada)" style="color:white" type="submit" form="remover" title="Remover participante" class="btn btn-sm btn-warning">Sair</button>
-          <button v-else title="Adicionar participante" type="submit" form="adicionar" class="btn btn-sm btn-primary">Entrar</button>
+          <button v-if="isInTurma(selecionada)" title="Sair da turma" style="color:white" type="submit" form="remover" class="btn btn-sm btn-warning">Sair</button>
+          <button v-else title="Entrar na turma" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#entrar">Entrar</button>
           <button title="Excluir turma" v-if="selecionada.admin.id === me.id" type="submit" form="excluir" class="btn btn-sm btn-danger">Excluir</button>
         </div>
         <!--FORMS PARA AÇÕES DE TURMA-->
@@ -87,14 +87,34 @@
             <input type="hidden" name="turmaid" :value="selecionada.id" />
             <input type="hidden" name="_csrf" value="<%- _csrf %>" />
         </form>
-        <form method="POST" action="addparticipante" id="adicionar">
-            <input type="hidden" name="turmaid" :value="selecionada.id" />
-            <input type="hidden" name="_csrf" value="<%- _csrf %>" />
-        </form>
+        
         <form method="POST" action="rmparticipante" id="remover">
             <input type="hidden" name="turmaid" :value="selecionada.id" />
             <input type="hidden" name="_csrf" value="<%- _csrf %>" />
         </form>
+      
+      <!--MOSTRA FORM PARA INSERIR O CÓDIGO-->
+      <div class="modal fade" id="entrar" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitle">Insira o código da turma</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form method="POST" action="addparticipante" id="adicionar">
+                <input class="form-control" type="text" name="codigo" />
+                <input type="hidden" name="turmaid" :value="selecionada.id" />
+                <input type="hidden" name="_csrf" value="<%- _csrf %>" /> <br>
+                <input type="submit" class="btn btn-primary" value="Entrar" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!---->
       
         <!--INFORMAÇÕES-->
         <div> <b>Admin:</b> {{ selecionada.admin.fullName }}</div>
@@ -114,11 +134,3 @@
 </div>
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
 
-  <!--
-•- views/pages/turmas.ejs
- •- api/controllers/view-turmas.js
- •- assets/styles/pages/turmas.less
- •- assets/js/pages/turmas.page.js
-
-  <p>(See also <em>assets/styles/pages/turmas.less</em>, <em>assets/js/pages/turmas.page.js</em>, and <em>api/controllers/view-turmas.js</em>.)</p>
--->
