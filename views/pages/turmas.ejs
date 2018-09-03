@@ -1,15 +1,10 @@
 <div id="turmas" v-cloak>
   <div class="container">
       <h1>Turmas</h1>
-    <hr/>
-    <!--TURMAS EM QUE O USUÁRIO ESTÁ APARECERIAM AQUI-->
     <div class="row">
-      <div title="Turmas em que você está" class="col-sm-6">
-        <h4>Minhas Turmas</h4>
-      </div>
-      <!--SE ESTIVER COM O PERFIL DE PROFESSOR, MOSTRA A OPÇÃO DE CRIAR TURMA-->
+      
       <div class="col-sm-6">
-        <button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#modal" href="#">Criar turma</button>
+<!--         <button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#modal" href="#">Criar turma</button> -->
         <!-- Modal -->
       <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -22,12 +17,12 @@
             </div>
             <div class="modal-body">
               <form action="turmas" method="POST">
-                Nome: <input type="textarea" class="form-control" name="nome"></input><br>
-                <input type="hidden" name="admin" value="<%= me.id %>" style="display: none"></input>
-                Descrição: <input type="textarea" class="form-control" name="descricao"></input><br>
-                Código: <input type="textarea" class="form-control" name="codigo"></input><br>
-                <!-- ** LEMBRETE ** 
-                Gerar codigo automaticamente -->
+                Nome: <input type="textarea" class="form-control" name="nome"></input><br />
+                Descrição: <input type="textarea" class="form-control" name="descricao"></input><br />
+                Código: <input type="input" v-model="codigo" class="form-control" name="codigo"></input>
+<!--                 <span class="icon"> -->
+                  <i title="Gerar codigo automaticamente" class="fa fa-random fa-lg" @click="codigo = (Math.random()+1).toString(36).substring(7)"></i><br><br>
+<!--                 </span> -->
                 <input type="hidden" name="_csrf" value="<%- _csrf %>" />
                 <button type="submit" onclick="" class="btn btn-primary">Save changes</button>
               </form>
@@ -42,32 +37,100 @@
       </div>
 
     </div>
-    <div class="row">
-      <div v-for="turma_own in turmas_own" href="">
-        <div title="Clique para ver detalhes sobre a turma" class="card m-3">
-          <div class="card-header bg-success">{{ turma_own.nome }}</div>
-          <div class="card-body">{{ turma_own.descricao }}</div>
+
+    <!--CARDS DE TURMA-->
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a title="Turmas em que você está" class="nav-link active" data-toggle="tab" href="#minhasturmas">Minhas turmas</a>
+        </li>
+        <li class="nav-item">
+          <a @click="mostrarTodas" title="Todas as turmas" class="nav-link" data-toggle="tab" href="#todas">Todas</a>
+        </li>
+        <button type="button" class="btn btn-sm btn-outline-info" data-toggle="modal" data-target="#modal" href="#">Criar turma</button>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="row tab-content">
+        
+        <div  id="minhasturmas" class="tab-pane active">
+            <div v-for="turma in turmas" @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
+              <div :class="[turma.admin.id === me.id ? 'bg-success' : 'bg-info', 'card-header']">{{ turma.nome }}</div>
+              <div class="card-body">{{ turma.descricao }}</div>
+            </div>
+        </div>
+        
+        <div id="todas" class="tab-pane" >
+          <div v-if="todas !== '' ">
+              <div v-for="turma in todas" @click="selecionada = turma" title="Clique para ver detalhes sobre a turma" class="card m-3">
+                <div :class="[turma.admin.id === me.id ? 'bg-success' : 'bg-primary', 'card-header']">{{ turma.nome }}</div>
+                <div class="card-body">{{ turma.descricao }}</div>
+              </div>
+           </div>
+        </div>
+        
+      </div>
+
+ <!--MOSTRA INFORMAÇÕES SOBRE UMA TURMA SELECIONADA-->
+  <div class="row" v-if="selecionada !== '' ">
+    <div class="col-sm-6">
+        <h3>{{ selecionada.nome }} - ID: {{ selecionada.id }}</h3>
+        <!--BOTÕES PARA AÇÕES DE TURMA-->
+        <div class="btn-group">
+          <button title="Fechar detalhes" @click="selecionada = '' " class="btn btn-sm btn-info">Fechar</button>
+          <button v-if="isInTurma(selecionada)" title="Sair da turma" style="color:white" type="submit" form="remover" class="btn btn-sm btn-warning">Sair</button>
+          <button v-else title="Entrar na turma" type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#entrar">Entrar</button>
+          <button title="Excluir turma" v-if="selecionada.admin.id === me.id" type="submit" form="excluir" class="btn btn-sm btn-danger">Excluir</button>
+        </div>
+        <!--FORMS PARA AÇÕES DE TURMA-->
+        <form method="POST" action="excluirturma" id="excluir">
+            <input type="hidden" name="turmaid" :value="selecionada.id" />
+            <input type="hidden" name="_csrf" value="<%- _csrf %>" />
+        </form>
+        
+        <form method="POST" action="rmparticipante" id="remover">
+            <input type="hidden" name="turmaid" :value="selecionada.id" />
+            <input type="hidden" name="_csrf" value="<%- _csrf %>" />
+        </form>
+      
+      <!--MOSTRA FORM PARA INSERIR O CÓDIGO-->
+      <div class="modal fade" id="entrar" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalTitle">Insira o código da turma</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form method="POST" action="addparticipante" id="adicionar">
+                <input class="form-control" type="text" name="codigo" />
+                <input type="hidden" name="turmaid" :value="selecionada.id" />
+                <input type="hidden" name="_csrf" value="<%- _csrf %>" /> <br>
+                <input type="submit" class="btn btn-primary" value="Entrar" />
+              </form>
+            </div>
+          </div>
         </div>
       </div>
-      <div v-for="turma in turmas" href="">
-        <div title="Clique para ver detalhes sobre a turma" class="card m-3">
-          <div class="card-header bg-info">{{ turma.nome }}</div>
-          <div class="card-body">{{ turma.descricao }}</div>
+      <!---->
+      
+        <!--INFORMAÇÕES-->
+        <div> <b>Admin:</b> {{ selecionada.admin.fullName }}</div>
+        <b>Participantes:</b> <span v-for="participante in selecionada.participantes">{{ participante.fullName }}, </span>
+        <br />
+        <b>Descrição:</b> <br />
+        <div>{{ selecionada.descricao }}</div>
+        <!--TO DO: LISTA DE GAMES-->
+        <div>
+          <b>Games:</b> <br />
+          {{ selecionada.games === null ? 'Não há games nesta turma ainda' : 'Lista' }}
         </div>
-      </div>
-     
     </div>
+  </div>
+
   </div>
 </div>
 <%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
 
-  <!--
-•- views/pages/turmas.ejs
- •- api/controllers/view-turmas.js
- •- assets/styles/pages/turmas.less
- •- assets/js/pages/turmas.page.js
-
-<h1>TODO: Implement this page.</h1>
-  <p>(See also <em>assets/styles/pages/turmas.less</em>, <em>assets/js/pages/turmas.page.js</em>, and <em>api/controllers/view-turmas.js</em>.)</p>
-
--->

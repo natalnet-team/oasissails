@@ -40,7 +40,11 @@ module.exports.routes = {
 
   'GET /iniciodesenvolvedor': { action: 'view-iniciodesenvolvedor'},
   'GET /turmas':             { action: 'turmas/view-turmas' },
+  'GET /turmas/mostrartodas': { action: 'turmas/mostrartodas' },
   'POST /turmas':            { action: 'turmas/turmas'},
+  'POST /excluirturma':      { action: 'turmas/excluir' },
+  'POST /addparticipante':   { action: 'turmas/addparticipante' },
+  'POST /rmparticipante': { action: 'turmas/rmparticipante' },
 
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
