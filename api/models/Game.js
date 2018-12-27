@@ -13,8 +13,21 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     
+    nome: {
+      type:'string',
+      required: true,
+      unique: true      
+    },
+
+    descricao: {
+      type: 'string',
+      required: true,
+      description: 'Descrição do jogo',
+    },
+
     autor: {
       model: 'User',
+      required: true,
     },
     
     disciplina: {
@@ -38,7 +51,17 @@ module.exports = {
       example: 'império romano',
     },
   
+    documento: {
+      model: 'Sgddedu',      
+  //   unique: true,
+  //    required: true,
+    },
 
+    gamefd: {
+      type: 'string',
+      required: true,
+      unique: true,
+    }
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

@@ -26,8 +26,8 @@ module.exports = {
   fn: async function (inputs, exits) {
 
     if (this.req.me) {
-      throw {redirect:'/welcome'};
-      //throw {redirect:'/turmas'};
+      //throw {redirect:'/welcome'};
+      throw {redirect:'/sendgame'};
     }
 
     return exits.success();

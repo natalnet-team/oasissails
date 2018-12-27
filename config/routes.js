@@ -46,6 +46,9 @@ module.exports.routes = {
   'POST /addparticipante':   { action: 'turmas/addparticipante' },
   'POST /rmparticipante': { action: 'turmas/rmparticipante' },
 
+  'GET /sendgame': { action: 'view-sendgame' },
+  'POST /upload': { action: 'games/upload' },
+
   //  ╔═╗╔═╗╦  ╔═╗╔╗╔╔╦╗╔═╗╔═╗╦╔╗╔╔╦╗╔═╗
   //  ╠═╣╠═╝║  ║╣ ║║║ ║║╠═╝║ ║║║║║ ║ ╚═╗
   //  ╩ ╩╩  ╩  ╚═╝╝╚╝═╩╝╩  ╚═╝╩╝╚╝ ╩ ╚═╝

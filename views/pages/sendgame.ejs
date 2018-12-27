@@ -1,0 +1,88 @@
+<div id="sendgame" v-cloak>
+
+  <div class="container mt-3">
+      <h1>Lançar novo jogo</h1>
+    <hr/>
+    
+	<!-- <form action="sendgame" method="POST" enctype="multipart/form-data">
+		<input class="form-control" type="text" name="nome" id="nome" placeholder="insira o nome do jogo..." class="[formErrors.nome ? 'is-invalid' : '']" v-model.trim="formData.nome"/>
+
+		<input class="form-control" type="text" name="descricao" id="descricao" placeholder="insira a descrição do jogo..." class="[formErrors.descricao ? 'is-invalid' : '']" v-model.trim="formData.descricao"/>
+
+		<input class="form-control" type="text" name="disciplina" id="disciplina" placeholder="insira a disciplina..." class="[formErrors.disciplina ? 'is-invalid' : '']" v-model.trim="formData.disciplina"/>
+
+		<input class="form-control" type="text" name="serie" id="serie" placeholder="insira a série..." class="[formErrors.serie ? 'is-invalid' : '']" v-model.trim="formData.serie"/>
+
+		<input class="form-control" type="text" name="conteudo" id="conteudo" placeholder="insira os conteúdos..." class="[formErrors.conteudo ? 'is-invalid' : '']" v-model.trim="formData.conteudo"/>
+
+		<input type="hidden" name="_csrf" value="<%- _csrf %>" />
+
+		<input class="form-control-file btn-active" type="file" accept=".rar, .zip" name="game" multiple="multiple" class="[formErrors.game ? 'is-invalid' : '']" />
+
+		<button class="form-control btn-success" type="submit" >Upload</button>
+	</form> -->
+    
+    <form  action="upload" enctype="multipart/form-data" :form-data="formData" :form-rules="formRules" :form-errors.sync="formErrors" method="POST">
+      
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="nome">Informe o nome do seu jogo: </label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="nome" id="nome" placeholder="insira o nome do jogo..." class="[formErrors.nome ? 'is-invalid' : '']" v-model.trim="formData.nome"/>
+          <div class="invalid-feedback" v-if="formErrors.nome">Informe um nome válido</div>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="descricao">Descreva o seu jogo: </label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="descricao" id="descricao" placeholder="insira a descrição do jogo..." class="[formErrors.descricao ? 'is-invalid' : '']" v-model.trim="formData.descricao"/>
+          <div class="invalid-feedback" v-if="formErrors.descricao">Insira uma descrição</div>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="disciplina">Qual disciplina ele aborda? </label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="disciplina" id="disciplina" placeholder="insira a disciplina..." class="[formErrors.disciplina ? 'is-invalid' : '']" v-model.trim="formData.disciplina"/>
+          <div class="invalid-feedback" v-if="formErrors.disciplina">Informe uma disciplina válida</div>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="serie">Qual a série alvo? </label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="serie" id="serie" placeholder="insira a série..." class="[formErrors.serie ? 'is-invalid' : '']" v-model.trim="formData.serie"/>
+          <div class="invalid-feedback" v-if="formErrors.serie">Informe uma série válida</div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label" for="conteudo">Quais assuntos seu jogo abrange? </label>
+        <div class="col-sm-9">
+          <input class="form-control" type="text" name="conteudo" id="conteudo" placeholder="insira os conteúdos..." class="[formErrors.conteudo ? 'is-invalid' : '']" v-model.trim="formData.conteudo"/>
+          <div class="invalid-feedback" v-if="formErrors.conteudo">Informe os assuntos</div>
+        </div>
+      </div>
+      
+      <input type="hidden" name="_csrf" value="<%- _csrf %>" />
+
+      <div class="form-group row">
+        <label class="col-sm-3 col-form-label">Escolha o arquivo compactado: </label>
+        <div class="col-sm-9">
+          <input class="form-control-file btn-active" type="file" accept=".rar, .zip" name="game" multiple="multiple" class="[formErrors.game ? 'is-invalid' : '']" />
+          <div class="invalid-feedback" v-if="formErrors.game">Insira um arquivo válido (".rar" ou ".zip")</div>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <div class="col-sm-4 offset-sm-3">
+        <button class="form-control btn-success" type="submit" >Upload</button>
+        </div>
+      </div>
+
+    </form>
+    
+    </div>
+<!-- <input type="hidden" name="autor" value="<%= me.id %>" style="display: none" /> -->
+</div>
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
