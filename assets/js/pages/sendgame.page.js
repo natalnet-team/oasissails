@@ -3,6 +3,7 @@ parasails.registerPage('sendgame', {
   //  ║║║║║ ║ ║╠═╣║    ╚═╗ ║ ╠═╣ ║ ║╣
   //  ╩╝╚╝╩ ╩ ╩╩ ╩╩═╝  ╚═╝ ╩ ╩ ╩ ╩ ╚═╝
   data: {
+    err: '',
     // Form data
     formData: { /* … */ },
 

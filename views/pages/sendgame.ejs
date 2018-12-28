@@ -22,6 +22,8 @@
 		<button class="form-control btn-success" type="submit" >Upload</button>
 	</form> -->
     
+    <div v-if="err" style="background-color: red" > {{err}} </div>
+
     <form  action="upload" enctype="multipart/form-data" :form-data="formData" :form-rules="formRules" :form-errors.sync="formErrors" method="POST">
       
       <div class="form-group row">
