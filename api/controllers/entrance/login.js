@@ -117,6 +117,14 @@ and exposed as \`req.me\`.)`
     // Modify the active session instance.
     this.req.session.userId = userRecord.id;
 
+    //nodebb
+    var jwt = require('jsonwebtoken');
+    var token = jwt.sign(
+      {id: userRecord.id, fullname: userRecord.fullName, email: userRecord.emailAddress},
+      sails.config.local.nodebbSecret);
+    this.res.cookie('nodebb', token, {HttpOnly: true, domain: 'localhost'});
+    //nodebb
+
     // Send success response (this is where the session actually gets persisted)
     
     return exits.success();

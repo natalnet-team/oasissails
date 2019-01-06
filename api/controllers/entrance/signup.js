@@ -118,6 +118,14 @@ the account verification message.)`,
       sails.log.info('Skipping new account email verification... (since `verifyEmailAddresses` is disabled)');
     }
 
+    //nodebb
+    var jwt = require('jsonwebtoken');
+    var token = jwt.sign(
+      {id: newUserRecord.id, fullname: newUserRecord.fullName, email: newUserRecord.emailAddress},
+      sails.config.local.nodebbSecret);
+    this.res.cookie('nodebb', token, {HttpOnly: true, domain: 'localhost'});
+    //nodebb
+
     // Since everything went ok, send our 200 response.
     return exits.success();
 
